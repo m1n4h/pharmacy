@@ -1,0 +1,72 @@
+[
+  {
+    "name": "Abdul Karim",
+    "company_name": "Square Pharmaceuticals Ltd.",
+    "phone": "+8801711001100",
+    "email": "supplier@squarepharma.com.bd",
+    "address": "Kaliakoir, Gazipur, Bangladesh"
+  },
+  {
+    "name": "Rafiqul Islam",
+    "company_name": "Incepta Pharmaceuticals Ltd.",
+    "phone": "+8801712002200",
+    "email": "contact@inceptapharma.com",
+    "address": "Dhamrai, Savar, Dhaka"
+  },
+  {
+    "name": "Mahmud Hasan",
+    "company_name": "Beximco Pharmaceuticals Ltd.",
+    "phone": "+8801713003300",
+    "email": "sales@beximcopharma.com",
+    "address": "Tongi Industrial Area, Gazipur"
+  },
+  {
+    "name": "Sajjad Hossain",
+    "company_name": "Renata Limited",
+    "phone": "+8801714004400",
+    "email": "support@renata-ltd.com",
+    "address": "Mirpur DOHS, Dhaka"
+  },
+  {
+    "name": "Kamal Hossain",
+    "company_name": "Opsonin Pharma Ltd.",
+    "phone": "+8801715005500",
+    "email": "info@opsonin.com",
+    "address": "Tejgaon Industrial Area, Dhaka"
+  },
+  {
+    "name": "Shakil Ahmed",
+    "company_name": "Eskayef Pharmaceuticals Ltd.",
+    "phone": "+8801716006600",
+    "email": "sales@skfbd.com",
+    "address": "Kaliakoir, Gazipur"
+  },
+  {
+    "name": "Nazmul Huda",
+    "company_name": "Acme Laboratories Ltd.",
+    "phone": "+8801717007700",
+    "email": "contact@acmeglobal.com",
+    "address": "Dhamrai, Dhaka"
+  },
+  {
+    "name": "Abdur Rahim",
+    "company_name": "Aristopharma Ltd.",
+    "phone": "+8801718008800",
+    "email": "info@aristopharma.com",
+    "address": "Shampur, Dhaka"
+  },
+  {
+    "name": "Khalid Mahmud",
+    "company_name": "Healthcare Pharmaceuticals Ltd.",
+    "phone": "+8801719009900",
+    "email": "support@hplbd.com",
+    "address": "Uttara, Dhaka"
+  },
+  {
+    "name": "Tasnim Rahman",
+    "company_name": "Beacon Pharmaceuticals Ltd.",
+    "phone": "+8801720010010",
+    "email": "sales@beaconpharma.com.bd",
+    "address": "Bhaluka, Mymensingh"
+  }
+]

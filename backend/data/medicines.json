@@ -1,0 +1,701 @@
+[
+  {
+    "name": "Napa 500",
+    "generic_name": "Paracetamol",
+    "brand": "Beximco",
+    "category": "tablet",
+    "unit": "strip",
+    "strength": "500mg"
+  },
+  {
+    "name": "Ace 500",
+    "generic_name": "Paracetamol",
+    "brand": "Square",
+    "category": "tablet",
+    "unit": "strip",
+    "strength": "500mg"
+  },
+  {
+    "name": "Pyrazol",
+    "generic_name": "Paracetamol",
+    "brand": "Opsonin",
+    "category": "tablet",
+    "unit": "strip",
+    "strength": "500mg"
+  },
+  {
+    "name": "Napa Syrup",
+    "generic_name": "Paracetamol",
+    "brand": "Beximco",
+    "category": "syrup",
+    "unit": "bottle",
+    "strength": "120mg/5ml"
+  },
+
+  {
+    "name": "Histac 150",
+    "generic_name": "Ranitidine",
+    "brand": "Square",
+    "category": "tablet",
+    "unit": "strip",
+    "strength": "150mg"
+  },
+  {
+    "name": "Ranidin",
+    "generic_name": "Ranitidine",
+    "brand": "Renata",
+    "category": "tablet",
+    "unit": "strip",
+    "strength": "150mg"
+  },
+  {
+    "name": "Fedo",
+    "generic_name": "Ranitidine",
+    "brand": "Beximco",
+    "category": "tablet",
+    "unit": "strip",
+    "strength": "150mg"
+  },
+
+  {
+    "name": "Maxpro 20",
+    "generic_name": "Esomeprazole",
+    "brand": "Incepta",
+    "category": "capsule",
+    "unit": "strip",
+    "strength": "20mg"
+  },
+  {
+    "name": "Esoral 20",
+    "generic_name": "Esomeprazole",
+    "brand": "Beximco",
+    "category": "capsule",
+    "unit": "strip",
+    "strength": "20mg"
+  },
+  {
+    "name": "Neotack 20",
+    "generic_name": "Esomeprazole",
+    "brand": "Square",
+    "category": "capsule",
+    "unit": "strip",
+    "strength": "20mg"
+  },
+
+  {
+    "name": "Cef-3 200",
+    "generic_name": "Cefixime",
+    "brand": "Square",
+    "category": "capsule",
+    "unit": "strip",
+    "strength": "200mg"
+  },
+  {
+    "name": "Fixime 200",
+    "generic_name": "Cefixime",
+    "brand": "Incepta",
+    "category": "capsule",
+    "unit": "strip",
+    "strength": "200mg"
+  },
+  {
+    "name": "Cefim 200",
+    "generic_name": "Cefixime",
+    "brand": "Eskayef",
+    "category": "capsule",
+    "unit": "strip",
+    "strength": "200mg"
+  },
+
+  {
+    "name": "Azith 500",
+    "generic_name": "Azithromycin",
+    "brand": "Square",
+    "category": "tablet",
+    "unit": "strip",
+    "strength": "500mg"
+  },
+  {
+    "name": "Zithrox 500",
+    "generic_name": "Azithromycin",
+    "brand": "Incepta",
+    "category": "tablet",
+    "unit": "strip",
+    "strength": "500mg"
+  },
+  {
+    "name": "Arixon 500",
+    "generic_name": "Azithromycin",
+    "brand": "Beximco",
+    "category": "tablet",
+    "unit": "strip",
+    "strength": "500mg"
+  },
+
+  {
+    "name": "Montair 10",
+    "generic_name": "Montelukast",
+    "brand": "Square",
+    "category": "tablet",
+    "unit": "strip",
+    "strength": "10mg"
+  },
+  {
+    "name": "Monas 10",
+    "generic_name": "Montelukast",
+    "brand": "Incepta",
+    "category": "tablet",
+    "unit": "strip",
+    "strength": "10mg"
+  },
+  {
+    "name": "Montril 10",
+    "generic_name": "Montelukast",
+    "brand": "Renata",
+    "category": "tablet",
+    "unit": "strip",
+    "strength": "10mg"
+  },
+
+  {
+    "name": "Fexo 120",
+    "generic_name": "Fexofenadine",
+    "brand": "Square",
+    "category": "tablet",
+    "unit": "strip",
+    "strength": "120mg"
+  },
+  {
+    "name": "Fenadin 120",
+    "generic_name": "Fexofenadine",
+    "brand": "Incepta",
+    "category": "tablet",
+    "unit": "strip",
+    "strength": "120mg"
+  },
+  {
+    "name": "Alergin 120",
+    "generic_name": "Fexofenadine",
+    "brand": "Beximco",
+    "category": "tablet",
+    "unit": "strip",
+    "strength": "120mg"
+  },
+
+  {
+    "name": "Seclo 20",
+    "generic_name": "Omeprazole",
+    "brand": "Square",
+    "category": "capsule",
+    "unit": "strip",
+    "strength": "20mg"
+  },
+  {
+    "name": "Ompra 20",
+    "generic_name": "Omeprazole",
+    "brand": "Incepta",
+    "category": "capsule",
+    "unit": "strip",
+    "strength": "20mg"
+  },
+  {
+    "name": "Mepral 20",
+    "generic_name": "Omeprazole",
+    "brand": "Beximco",
+    "category": "capsule",
+    "unit": "strip",
+    "strength": "20mg"
+  },
+
+  {
+    "name": "Ceevit 500",
+    "generic_name": "Vitamin C",
+    "brand": "Square",
+    "category": "tablet",
+    "unit": "strip",
+    "strength": "500mg"
+  },
+  {
+    "name": "Asvita 500",
+    "generic_name": "Vitamin C",
+    "brand": "Beximco",
+    "category": "tablet",
+    "unit": "strip",
+    "strength": "500mg"
+  },
+  {
+    "name": "C-Vita",
+    "generic_name": "Vitamin C",
+    "brand": "Incepta",
+    "category": "tablet",
+    "unit": "strip",
+    "strength": "500mg"
+  },
+
+  {
+    "name": "Filwel Mom",
+    "generic_name": "Multivitamin",
+    "brand": "Square",
+    "category": "capsule",
+    "unit": "strip",
+    "strength": "standard"
+  },
+  {
+    "name": "Centrum",
+    "generic_name": "Multivitamin",
+    "brand": "Pfizer BD",
+    "category": "tablet",
+    "unit": "bottle",
+    "strength": "standard"
+  },
+
+  {
+    "name": "Losectil 20",
+    "generic_name": "Omeprazole",
+    "brand": "Eskayef",
+    "category": "capsule",
+    "unit": "strip",
+    "strength": "20mg"
+  },
+  {
+    "name": "Napa Extra",
+    "generic_name": "Paracetamol + Caffeine",
+    "brand": "Beximco",
+    "category": "tablet",
+    "unit": "strip",
+    "strength": "500mg + 65mg"
+  },
+
+  {
+    "name": "Orsaline-N",
+    "generic_name": "ORS",
+    "brand": "SMC",
+    "category": "powder",
+    "unit": "sachet",
+    "strength": "standard"
+  },
+  {
+    "name": "Oral Saline",
+    "generic_name": "ORS",
+    "brand": "Square",
+    "category": "powder",
+    "unit": "sachet",
+    "strength": "standard"
+  },
+  {
+    "name": "Orsal",
+    "generic_name": "ORS",
+    "brand": "Incepta",
+    "category": "powder",
+    "unit": "sachet",
+    "strength": "standard"
+  },
+
+  {
+    "name": "Furotil 40",
+    "generic_name": "Furosemide",
+    "brand": "Square",
+    "category": "tablet",
+    "unit": "strip",
+    "strength": "40mg"
+  },
+  {
+    "name": "Furex 40",
+    "generic_name": "Furosemide",
+    "brand": "Incepta",
+    "category": "tablet",
+    "unit": "strip",
+    "strength": "40mg"
+  },
+
+  {
+    "name": "Sominex",
+    "generic_name": "Cetirizine",
+    "brand": "Square",
+    "category": "tablet",
+    "unit": "strip",
+    "strength": "10mg"
+  },
+  {
+    "name": "Cetizin",
+    "generic_name": "Cetirizine",
+    "brand": "Incepta",
+    "category": "tablet",
+    "unit": "strip",
+    "strength": "10mg"
+  },
+  {
+    "name": "Cirnil",
+    "generic_name": "Cetirizine",
+    "brand": "Renata",
+    "category": "tablet",
+    "unit": "strip",
+    "strength": "10mg"
+  },
+
+  {
+    "name": "Alatrol",
+    "generic_name": "Loratadine",
+    "brand": "Square",
+    "category": "tablet",
+    "unit": "strip",
+    "strength": "10mg"
+  },
+  {
+    "name": "Loratin",
+    "generic_name": "Loratadine",
+    "brand": "Incepta",
+    "category": "tablet",
+    "unit": "strip",
+    "strength": "10mg"
+  },
+  {
+    "name": "Loranex",
+    "generic_name": "Loratadine",
+    "brand": "Renata",
+    "category": "tablet",
+    "unit": "strip",
+    "strength": "10mg"
+  },
+
+  {
+    "name": "Bactab 500",
+    "generic_name": "Metronidazole",
+    "brand": "Square",
+    "category": "tablet",
+    "unit": "strip",
+    "strength": "500mg"
+  },
+  {
+    "name": "Metrozil 500",
+    "generic_name": "Metronidazole",
+    "brand": "Incepta",
+    "category": "tablet",
+    "unit": "strip",
+    "strength": "500mg"
+  },
+  {
+    "name": "Metron 500",
+    "generic_name": "Metronidazole",
+    "brand": "Beximco",
+    "category": "tablet",
+    "unit": "strip",
+    "strength": "500mg"
+  },
+
+  {
+    "name": "Neoflox 500",
+    "generic_name": "Ciprofloxacin",
+    "brand": "Square",
+    "category": "tablet",
+    "unit": "strip",
+    "strength": "500mg"
+  },
+  {
+    "name": "Cipron 500",
+    "generic_name": "Ciprofloxacin",
+    "brand": "Incepta",
+    "category": "tablet",
+    "unit": "strip",
+    "strength": "500mg"
+  },
+  {
+    "name": "Ciproflox 500",
+    "generic_name": "Ciprofloxacin",
+    "brand": "Beximco",
+    "category": "tablet",
+    "unit": "strip",
+    "strength": "500mg"
+  },
+  {
+    "name": "Xumet 10",
+    "generic_name": "Desloratadine",
+    "brand": "Square",
+    "category": "tablet",
+    "unit": "strip",
+    "strength": "5mg"
+  },
+  {
+    "name": "Deslor 5",
+    "generic_name": "Desloratadine",
+    "brand": "Incepta",
+    "category": "tablet",
+    "unit": "strip",
+    "strength": "5mg"
+  },
+  {
+    "name": "Dilorel",
+    "generic_name": "Desloratadine",
+    "brand": "Beximco",
+    "category": "tablet",
+    "unit": "strip",
+    "strength": "5mg"
+  },
+
+  {
+    "name": "Flugal 150",
+    "generic_name": "Fluconazole",
+    "brand": "Square",
+    "category": "capsule",
+    "unit": "strip",
+    "strength": "150mg"
+  },
+  {
+    "name": "Fungin 150",
+    "generic_name": "Fluconazole",
+    "brand": "Incepta",
+    "category": "capsule",
+    "unit": "strip",
+    "strength": "150mg"
+  },
+
+  {
+    "name": "Ambrox 30",
+    "generic_name": "Ambroxol",
+    "brand": "Square",
+    "category": "syrup",
+    "unit": "bottle",
+    "strength": "15mg/5ml"
+  },
+  {
+    "name": "Ambroxin",
+    "generic_name": "Ambroxol",
+    "brand": "Incepta",
+    "category": "syrup",
+    "unit": "bottle",
+    "strength": "15mg/5ml"
+  },
+
+  {
+    "name": "Kuff 100",
+    "generic_name": "Dextromethorphan",
+    "brand": "Beximco",
+    "category": "syrup",
+    "unit": "bottle",
+    "strength": "10mg/5ml"
+  },
+  {
+    "name": "Tusca",
+    "generic_name": "Dextromethorphan",
+    "brand": "Square",
+    "category": "syrup",
+    "unit": "bottle",
+    "strength": "10mg/5ml"
+  },
+
+  {
+    "name": "Salbutol",
+    "generic_name": "Salbutamol",
+    "brand": "Square",
+    "category": "inhaler",
+    "unit": "device",
+    "strength": "100mcg"
+  },
+  {
+    "name": "Ventolin",
+    "generic_name": "Salbutamol",
+    "brand": "GSK BD",
+    "category": "inhaler",
+    "unit": "device",
+    "strength": "100mcg"
+  },
+
+  {
+    "name": "Montikid",
+    "generic_name": "Montelukast",
+    "brand": "Radiant",
+    "category": "tablet",
+    "unit": "strip",
+    "strength": "4mg"
+  },
+
+  {
+    "name": "Antazol",
+    "generic_name": "Antazoline",
+    "brand": "Square",
+    "category": "eye_drop",
+    "unit": "bottle",
+    "strength": "0.5%"
+  },
+
+  {
+    "name": "Fluzed",
+    "generic_name": "Pseudoephedrine + Triprolidine",
+    "brand": "Square",
+    "category": "tablet",
+    "unit": "strip",
+    "strength": "60mg + 2.5mg"
+  },
+  {
+    "name": "Fludex",
+    "generic_name": "Pseudoephedrine + Triprolidine",
+    "brand": "Incepta",
+    "category": "tablet",
+    "unit": "strip",
+    "strength": "60mg + 2.5mg"
+  },
+
+  {
+    "name": "Maxpro 40",
+    "generic_name": "Esomeprazole",
+    "brand": "Incepta",
+    "category": "capsule",
+    "unit": "strip",
+    "strength": "40mg"
+  },
+  {
+    "name": "Esoral 40",
+    "generic_name": "Esomeprazole",
+    "brand": "Beximco",
+    "category": "capsule",
+    "unit": "strip",
+    "strength": "40mg"
+  },
+
+  {
+    "name": "Gaviscon",
+    "generic_name": "Aluminium Hydroxide + Magnesium Hydroxide",
+    "brand": "Reckitt BD",
+    "category": "syrup",
+    "unit": "bottle",
+    "strength": "500mg/5ml"
+  },
+  {
+    "name": "Antacid Max",
+    "generic_name": "Aluminium Hydroxide + Magnesium Hydroxide",
+    "brand": "Square",
+    "category": "syrup",
+    "unit": "bottle",
+    "strength": "500mg/5ml"
+  },
+
+  {
+    "name": "Flutisol",
+    "generic_name": "Fluticasone",
+    "brand": "Square",
+    "category": "spray",
+    "unit": "bottle",
+    "strength": "50mcg"
+  },
+  {
+    "name": "Flutocort",
+    "generic_name": "Fluticasone",
+    "brand": "Incepta",
+    "category": "spray",
+    "unit": "bottle",
+    "strength": "50mcg"
+  },
+
+  {
+    "name": "Amodis",
+    "generic_name": "Amodiaquine",
+    "brand": "Square",
+    "category": "tablet",
+    "unit": "strip",
+    "strength": "200mg"
+  },
+
+  {
+    "name": "Almex",
+    "generic_name": "Albendazole",
+    "brand": "Square",
+    "category": "tablet",
+    "unit": "strip",
+    "strength": "400mg"
+  },
+  {
+    "name": "Zentel",
+    "generic_name": "Albendazole",
+    "brand": "GSK BD",
+    "category": "tablet",
+    "unit": "strip",
+    "strength": "400mg"
+  },
+
+  {
+    "name": "Dompy",
+    "generic_name": "Domperidone",
+    "brand": "Square",
+    "category": "tablet",
+    "unit": "strip",
+    "strength": "10mg"
+  },
+  {
+    "name": "Domeprid",
+    "generic_name": "Domperidone",
+    "brand": "Incepta",
+    "category": "tablet",
+    "unit": "strip",
+    "strength": "10mg"
+  },
+
+  {
+    "name": "Mucosin",
+    "generic_name": "Bromhexine",
+    "brand": "Square",
+    "category": "syrup",
+    "unit": "bottle",
+    "strength": "4mg/5ml"
+  },
+  {
+    "name": "Bromhex",
+    "generic_name": "Bromhexine",
+    "brand": "Incepta",
+    "category": "syrup",
+    "unit": "bottle",
+    "strength": "4mg/5ml"
+  },
+
+  {
+    "name": "Telfast 120",
+    "generic_name": "Fexofenadine",
+    "brand": "Sanofi BD",
+    "category": "tablet",
+    "unit": "strip",
+    "strength": "120mg"
+  },
+
+  {
+    "name": "Flugal 50",
+    "generic_name": "Fluconazole",
+    "brand": "Square",
+    "category": "capsule",
+    "unit": "strip",
+    "strength": "50mg"
+  },
+
+  {
+    "name": "Glucozin",
+    "generic_name": "Zinc Sulfate",
+    "brand": "Square",
+    "category": "syrup",
+    "unit": "bottle",
+    "strength": "20mg/5ml"
+  },
+  {
+    "name": "Zincolyte",
+    "generic_name": "Zinc Sulfate",
+    "brand": "Incepta",
+    "category": "syrup",
+    "unit": "bottle",
+    "strength": "20mg/5ml"
+  },
+
+  {
+    "name": "ORS Plus",
+    "generic_name": "ORS",
+    "brand": "Acme",
+    "category": "powder",
+    "unit": "sachet",
+    "strength": "standard"
+  },
+
+  {
+    "name": "Amodis DS",
+    "generic_name": "Amodiaquine",
+    "brand": "Square",
+    "category": "tablet",
+    "unit": "strip",
+    "strength": "400mg"
+  }
+]

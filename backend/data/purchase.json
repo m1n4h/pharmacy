@@ -1,0 +1,848 @@
+[
+  {
+    "supplier_name": "Square Pharmaceuticals Ltd.",
+    "purchase_date": "2025-01-15",
+    "items": [
+      {
+        "medicine_id": 1,
+        "batch_no": "SQ-2025-A1",
+        "expiry_date": "2027-01-30",
+        "purchase_price": 4.5,
+        "selling_price": 6.0,
+        "quantity": 200
+      }
+    ]
+  },
+  {
+    "supplier_name": "Incepta Pharmaceuticals Ltd.",
+    "purchase_date": "2025-02-10",
+    "items": [
+      {
+        "medicine_id": 2,
+        "batch_no": "IN-2025-B2",
+        "expiry_date": "2027-03-15",
+        "purchase_price": 12.0,
+        "selling_price": 15.0,
+        "quantity": 150
+      }
+    ]
+  },
+  {
+    "supplier_name": "Beximco Pharmaceuticals Ltd.",
+    "purchase_date": "2025-03-05",
+    "items": [
+      {
+        "medicine_id": 3,
+        "batch_no": "BX-2025-C3",
+        "expiry_date": "2026-08-20",
+        "purchase_price": 6.0,
+        "selling_price": 8.0,
+        "quantity": 300
+      }
+    ]
+  },
+  {
+    "supplier_name": "Renata Limited",
+    "purchase_date": "2025-04-12",
+    "items": [
+      {
+        "medicine_id": 4,
+        "batch_no": "RE-2025-D4",
+        "expiry_date": "2027-05-10",
+        "purchase_price": 5.5,
+        "selling_price": 7.5,
+        "quantity": 250
+      }
+    ]
+  },
+  {
+    "supplier_name": "Opsonin Pharma Ltd.",
+    "purchase_date": "2025-05-08",
+    "items": [
+      {
+        "medicine_id": 5,
+        "batch_no": "OP-2025-E5",
+        "expiry_date": "2026-11-18",
+        "purchase_price": 3.0,
+        "selling_price": 4.5,
+        "quantity": 400
+      }
+    ]
+  },
+  {
+    "supplier_name": "Eskayef Pharmaceuticals Ltd.",
+    "purchase_date": "2025-06-17",
+    "items": [
+      {
+        "medicine_id": 6,
+        "batch_no": "ESK-2025-F6",
+        "expiry_date": "2027-02-12",
+        "purchase_price": 14.0,
+        "selling_price": 18.0,
+        "quantity": 180
+      }
+    ]
+  },
+  {
+    "supplier_name": "Acme Laboratories Ltd.",
+    "purchase_date": "2025-07-22",
+    "items": [
+      {
+        "medicine_id": 7,
+        "batch_no": "AC-2025-G7",
+        "expiry_date": "2026-10-30",
+        "purchase_price": 4.0,
+        "selling_price": 6.0,
+        "quantity": 350
+      }
+    ]
+  },
+  {
+    "supplier_name": "Aristopharma Ltd.",
+    "purchase_date": "2025-08-04",
+    "items": [
+      {
+        "medicine_id": 8,
+        "batch_no": "AR-2025-H8",
+        "expiry_date": "2027-01-05",
+        "purchase_price": 11.0,
+        "selling_price": 13.5,
+        "quantity": 220
+      }
+    ]
+  },
+  {
+    "supplier_name": "Healthcare Pharmaceuticals Ltd.",
+    "purchase_date": "2025-09-11",
+    "items": [
+      {
+        "medicine_id": 9,
+        "batch_no": "HCP-2025-I9",
+        "expiry_date": "2026-12-11",
+        "purchase_price": 7.0,
+        "selling_price": 10.0,
+        "quantity": 270
+      }
+    ]
+  },
+  {
+    "supplier_name": "Beacon Pharmaceuticals Ltd.",
+    "purchase_date": "2025-10-25",
+    "items": [
+      {
+        "medicine_id": 10,
+        "batch_no": "BCN-2025-J10",
+        "expiry_date": "2027-06-19",
+        "purchase_price": 16.0,
+        "selling_price": 20.0,
+        "quantity": 160
+      }
+    ]
+  },
+
+  {
+    "supplier_name": "Square Pharmaceuticals Ltd.",
+    "purchase_date": "2025-11-02",
+    "items": [
+      {
+        "medicine_id": 12,
+        "batch_no": "SQ-2025-K11",
+        "expiry_date": "2027-04-21",
+        "purchase_price": 9.5,
+        "selling_price": 12.0,
+        "quantity": 220
+      }
+    ]
+  },
+  {
+    "supplier_name": "Incepta Pharmaceuticals Ltd.",
+    "purchase_date": "2025-12-15",
+    "items": [
+      {
+        "medicine_id": 13,
+        "batch_no": "IN-2025-L12",
+        "expiry_date": "2027-09-09",
+        "purchase_price": 18.0,
+        "selling_price": 22.0,
+        "quantity": 140
+      }
+    ]
+  },
+
+  {
+    "supplier_name": "Beximco Pharmaceuticals Ltd.",
+    "purchase_date": "2025-01-27",
+    "items": [
+      {
+        "medicine_id": 14,
+        "batch_no": "BX-2025-M13",
+        "expiry_date": "2026-07-14",
+        "purchase_price": 5.0,
+        "selling_price": 7.0,
+        "quantity": 320
+      }
+    ]
+  },
+  {
+    "supplier_name": "Renata Limited",
+    "purchase_date": "2025-02-18",
+    "items": [
+      {
+        "medicine_id": 15,
+        "batch_no": "RE-2025-N14",
+        "expiry_date": "2027-01-30",
+        "purchase_price": 13.0,
+        "selling_price": 17.0,
+        "quantity": 210
+      }
+    ]
+  },
+  {
+    "supplier_name": "Opsonin Pharma Ltd.",
+    "purchase_date": "2025-03-29",
+    "items": [
+      {
+        "medicine_id": 16,
+        "batch_no": "OP-2025-O15",
+        "expiry_date": "2026-10-20",
+        "purchase_price": 4.0,
+        "selling_price": 6.0,
+        "quantity": 380
+      }
+    ]
+  },
+  {
+    "supplier_name": "Eskayef Pharmaceuticals Ltd.",
+    "purchase_date": "2025-04-16",
+    "items": [
+      {
+        "medicine_id": 17,
+        "batch_no": "ESK-2025-P16",
+        "expiry_date": "2027-03-17",
+        "purchase_price": 19.0,
+        "selling_price": 24.0,
+        "quantity": 130
+      }
+    ]
+  },
+  {
+    "supplier_name": "Acme Laboratories Ltd.",
+    "purchase_date": "2025-05-21",
+    "items": [
+      {
+        "medicine_id": 18,
+        "batch_no": "AC-2025-Q17",
+        "expiry_date": "2026-09-09",
+        "purchase_price": 6.0,
+        "selling_price": 8.5,
+        "quantity": 260
+      }
+    ]
+  },
+  {
+    "supplier_name": "Aristopharma Ltd.",
+    "purchase_date": "2025-06-30",
+    "items": [
+      {
+        "medicine_id": 19,
+        "batch_no": "AR-2025-R18",
+        "expiry_date": "2027-01-01",
+        "purchase_price": 10.5,
+        "selling_price": 13.0,
+        "quantity": 200
+      }
+    ]
+  },
+  {
+    "supplier_name": "Healthcare Pharmaceuticals Ltd.",
+    "purchase_date": "2025-07-11",
+    "items": [
+      {
+        "medicine_id": 20,
+        "batch_no": "HCP-2025-S19",
+        "expiry_date": "2026-11-11",
+        "purchase_price": 7.5,
+        "selling_price": 10.0,
+        "quantity": 300
+      }
+    ]
+  },
+  {
+    "supplier_name": "Beacon Pharmaceuticals Ltd.",
+    "purchase_date": "2025-08-28",
+    "items": [
+      {
+        "medicine_id": 21,
+        "batch_no": "BCN-2025-T20",
+        "expiry_date": "2027-05-25",
+        "purchase_price": 15.0,
+        "selling_price": 19.5,
+        "quantity": 180
+      }
+    ]
+  },
+  {
+    "supplier_name": "Abdul Karim",
+    "purchase_date": "2025-01-15",
+    "items": [
+      {
+        "medicine_id": 21,
+        "batch_no": "SQ-A1",
+        "expiry_date": "2027-01-30",
+        "purchase_price": 4.5,
+        "selling_price": 6.0,
+        "quantity": 200
+      },
+      {
+        "medicine_id": 23,
+        "batch_no": "SQ-A2",
+        "expiry_date": "2026-10-15",
+        "purchase_price": 3.2,
+        "selling_price": 4.8,
+        "quantity": 180
+      },
+      {
+        "medicine_id": 24,
+        "batch_no": "SQ-A3",
+        "expiry_date": "2027-04-12",
+        "purchase_price": 10.0,
+        "selling_price": 13.0,
+        "quantity": 90
+      },
+      {
+        "medicine_id": 25,
+        "batch_no": "SQ-A4",
+        "expiry_date": "2027-06-21",
+        "purchase_price": 8.0,
+        "selling_price": 11.0,
+        "quantity": 150
+      },
+      {
+        "medicine_id": 26,
+        "batch_no": "SQ-A5",
+        "expiry_date": "2026-12-30",
+        "purchase_price": 6.0,
+        "selling_price": 8.5,
+        "quantity": 210
+      },
+      {
+        "medicine_id": 27,
+        "batch_no": "SQ-A6",
+        "expiry_date": "2027-01-10",
+        "purchase_price": 5.5,
+        "selling_price": 7.5,
+        "quantity": 130
+      }
+    ]
+  },
+
+  {
+    "supplier_name": "Rafiqul Islam",
+    "purchase_date": "2025-02-10",
+    "items": [
+      {
+        "medicine_id": 28,
+        "batch_no": "IN-B1",
+        "expiry_date": "2027-03-15",
+        "purchase_price": 12.0,
+        "selling_price": 15.0,
+        "quantity": 150
+      },
+      {
+        "medicine_id": 29,
+        "batch_no": "IN-B2",
+        "expiry_date": "2026-11-19",
+        "purchase_price": 7.0,
+        "selling_price": 10.0,
+        "quantity": 140
+      },
+      {
+        "medicine_id": 30,
+        "batch_no": "IN-B3",
+        "expiry_date": "2026-09-22",
+        "purchase_price": 9.0,
+        "selling_price": 12.0,
+        "quantity": 200
+      },
+      {
+        "medicine_id": 31,
+        "batch_no": "IN-B4",
+        "expiry_date": "2027-01-11",
+        "purchase_price": 14.0,
+        "selling_price": 17.5,
+        "quantity": 100
+      },
+      {
+        "medicine_id": 32,
+        "batch_no": "IN-B5",
+        "expiry_date": "2027-02-02",
+        "purchase_price": 16.0,
+        "selling_price": 20.0,
+        "quantity": 120
+      },
+      {
+        "medicine_id": 33,
+        "batch_no": "IN-B6",
+        "expiry_date": "2026-08-10",
+        "purchase_price": 5.0,
+        "selling_price": 7.5,
+        "quantity": 260
+      }
+    ]
+  },
+  {
+    "supplier_name": "Beximco Pharmaceuticals Ltd.",
+    "purchase_date": "2025-03-05",
+    "items": [
+      {
+        "medicine_id": 34,
+        "batch_no": "BX-C1",
+        "expiry_date": "2026-08-20",
+        "purchase_price": 6.0,
+        "selling_price": 8.0,
+        "quantity": 300
+      },
+      {
+        "medicine_id": 35,
+        "batch_no": "BX-C2",
+        "expiry_date": "2027-05-24",
+        "purchase_price": 17.0,
+        "selling_price": 21.0,
+        "quantity": 120
+      },
+      {
+        "medicine_id": 36,
+        "batch_no": "BX-C3",
+        "expiry_date": "2026-12-14",
+        "purchase_price": 11.5,
+        "selling_price": 14.5,
+        "quantity": 100
+      },
+      {
+        "medicine_id": 37,
+        "batch_no": "BX-C4",
+        "expiry_date": "2027-01-08",
+        "purchase_price": 4.2,
+        "selling_price": 6.0,
+        "quantity": 180
+      },
+      {
+        "medicine_id": 38,
+        "batch_no": "BX-C5",
+        "expiry_date": "2026-07-10",
+        "purchase_price": 5.5,
+        "selling_price": 7.0,
+        "quantity": 220
+      },
+      {
+        "medicine_id": 39,
+        "batch_no": "BX-C6",
+        "expiry_date": "2026-10-05",
+        "purchase_price": 9.0,
+        "selling_price": 12.0,
+        "quantity": 160
+      }
+    ]
+  },
+
+  {
+    "supplier_name": "Sajjad Hossain",
+    "purchase_date": "2025-04-12",
+    "items": [
+      {
+        "medicine_id": 40,
+        "batch_no": "RE-D1",
+        "expiry_date": "2027-05-10",
+        "purchase_price": 5.5,
+        "selling_price": 7.5,
+        "quantity": 250
+      },
+      {
+        "medicine_id": 41,
+        "batch_no": "RE-D2",
+        "expiry_date": "2026-10-20",
+        "purchase_price": 3.2,
+        "selling_price": 4.5,
+        "quantity": 300
+      },
+      {
+        "medicine_id": 42,
+        "batch_no": "RE-D3",
+        "expiry_date": "2027-02-15",
+        "purchase_price": 12.0,
+        "selling_price": 15.0,
+        "quantity": 100
+      },
+      {
+        "medicine_id": 43,
+        "batch_no": "RE-D4",
+        "expiry_date": "2026-07-01",
+        "purchase_price": 7.0,
+        "selling_price": 10.0,
+        "quantity": 150
+      },
+      {
+        "medicine_id": 44,
+        "batch_no": "RE-D5",
+        "expiry_date": "2027-06-30",
+        "purchase_price": 15.5,
+        "selling_price": 18.5,
+        "quantity": 110
+      },
+      {
+        "medicine_id": 45,
+        "batch_no": "RE-D6",
+        "expiry_date": "2026-11-05",
+        "purchase_price": 4.5,
+        "selling_price": 6.0,
+        "quantity": 240
+      }
+    ]
+  },
+
+  {
+    "supplier_name": "Opsonin Pharma Ltd.",
+    "purchase_date": "2025-05-08",
+    "items": [
+      {
+        "medicine_id": 46,
+        "batch_no": "OP-E1",
+        "expiry_date": "2026-11-18",
+        "purchase_price": 3.0,
+        "selling_price": 4.5,
+        "quantity": 400
+      },
+      {
+        "medicine_id": 47,
+        "batch_no": "OP-E2",
+        "expiry_date": "2027-08-12",
+        "purchase_price": 13.0,
+        "selling_price": 17.0,
+        "quantity": 150
+      },
+      {
+        "medicine_id": 48,
+        "batch_no": "OP-E3",
+        "expiry_date": "2026-06-10",
+        "purchase_price": 7.5,
+        "selling_price": 10.0,
+        "quantity": 190
+      },
+      {
+        "medicine_id": 49,
+        "batch_no": "OP-E4",
+        "expiry_date": "2027-03-29",
+        "purchase_price": 10.0,
+        "selling_price": 12.5,
+        "quantity": 140
+      },
+      {
+        "medicine_id": 50,
+        "batch_no": "OP-E5",
+        "expiry_date": "2026-10-10",
+        "purchase_price": 8.0,
+        "selling_price": 11.0,
+        "quantity": 210
+      },
+      {
+        "medicine_id": 51,
+        "batch_no": "OP-E6",
+        "expiry_date": "2027-01-01",
+        "purchase_price": 16.0,
+        "selling_price": 21.0,
+        "quantity": 130
+      }
+    ]
+  },
+
+  {
+    "supplier_name": "Shakil Ahmed",
+    "purchase_date": "2025-06-17",
+    "items": [
+      {
+        "medicine_id": 52,
+        "batch_no": "ESK-F1",
+        "expiry_date": "2027-02-12",
+        "purchase_price": 14.0,
+        "selling_price": 18.0,
+        "quantity": 180
+      },
+      {
+        "medicine_id": 53,
+        "batch_no": "ESK-F2",
+        "expiry_date": "2027-05-15",
+        "purchase_price": 19.0,
+        "selling_price": 23.0,
+        "quantity": 100
+      },
+      {
+        "medicine_id": 54,
+        "batch_no": "ESK-F3",
+        "expiry_date": "2026-09-14",
+        "purchase_price": 6.5,
+        "selling_price": 9.0,
+        "quantity": 210
+      },
+      {
+        "medicine_id": 55,
+        "batch_no": "ESK-F4",
+        "expiry_date": "2026-11-19",
+        "purchase_price": 11.0,
+        "selling_price": 14.0,
+        "quantity": 160
+      },
+      {
+        "medicine_id": 56,
+        "batch_no": "ESK-F5",
+        "expiry_date": "2027-06-30",
+        "purchase_price": 15.0,
+        "selling_price": 19.0,
+        "quantity": 130
+      },
+      {
+        "medicine_id": 57,
+        "batch_no": "ESK-F6",
+        "expiry_date": "2026-10-10",
+        "purchase_price": 10.0,
+        "selling_price": 13.0,
+        "quantity": 190
+      }
+    ]
+  },
+
+  {
+    "supplier_name": "Nazmul Huda",
+    "purchase_date": "2025-07-22",
+    "items": [
+      {
+        "medicine_id": 58,
+        "batch_no": "AC-G1",
+        "expiry_date": "2026-10-30",
+        "purchase_price": 4.0,
+        "selling_price": 6.0,
+        "quantity": 350
+      },
+      {
+        "medicine_id": 59,
+        "batch_no": "AC-G2",
+        "expiry_date": "2026-07-11",
+        "purchase_price": 8.0,
+        "selling_price": 11.0,
+        "quantity": 200
+      },
+      {
+        "medicine_id": 60,
+        "batch_no": "AC-G3",
+        "expiry_date": "2027-02-22",
+        "purchase_price": 14.0,
+        "selling_price": 18.0,
+        "quantity": 140
+      },
+      {
+        "medicine_id": 61,
+        "batch_no": "AC-G4",
+        "expiry_date": "2026-12-19",
+        "purchase_price": 5.0,
+        "selling_price": 7.0,
+        "quantity": 210
+      },
+      {
+        "medicine_id": 62,
+        "batch_no": "AC-G5",
+        "expiry_date": "2027-03-15",
+        "purchase_price": 12.5,
+        "selling_price": 16.0,
+        "quantity": 160
+      },
+      {
+        "medicine_id": 63,
+        "batch_no": "AC-G6",
+        "expiry_date": "2026-08-10",
+        "purchase_price": 6.0,
+        "selling_price": 8.5,
+        "quantity": 260
+      }
+    ]
+  },
+
+  {
+    "supplier_name": "Aristopharma Ltd.",
+    "purchase_date": "2025-08-04",
+    "items": [
+      {
+        "medicine_id": 64,
+        "batch_no": "AR-H1",
+        "expiry_date": "2027-01-05",
+        "purchase_price": 11.0,
+        "selling_price": 13.5,
+        "quantity": 220
+      },
+      {
+        "medicine_id": 65,
+        "batch_no": "AR-H2",
+        "expiry_date": "2026-10-01",
+        "purchase_price": 13.0,
+        "selling_price": 17.5,
+        "quantity": 110
+      },
+      {
+        "medicine_id": 66,
+        "batch_no": "AR-H3",
+        "expiry_date": "2027-04-19",
+        "purchase_price": 6.0,
+        "selling_price": 8.5,
+        "quantity": 200
+      },
+      {
+        "medicine_id": 67,
+        "batch_no": "AR-H4",
+        "expiry_date": "2026-11-15",
+        "purchase_price": 9.0,
+        "selling_price": 12.0,
+        "quantity": 180
+      },
+      {
+        "medicine_id": 68,
+        "batch_no": "AR-H5",
+        "expiry_date": "2027-07-01",
+        "purchase_price": 8.0,
+        "selling_price": 11.0,
+        "quantity": 240
+      },
+      {
+        "medicine_id": 69,
+        "batch_no": "AR-H6",
+        "expiry_date": "2027-02-14",
+        "purchase_price": 18.0,
+        "selling_price": 22.0,
+        "quantity": 130
+      }
+    ]
+  },
+
+  {
+    "supplier_name": "Khalid Mahmud",
+    "purchase_date": "2025-09-11",
+    "items": [
+      {
+        "medicine_id": 70,
+        "batch_no": "HCP-I1",
+        "expiry_date": "2026-12-11",
+        "purchase_price": 7.0,
+        "selling_price": 10.0,
+        "quantity": 270
+      },
+      {
+        "medicine_id": 71,
+        "batch_no": "HCP-I2",
+        "expiry_date": "2027-03-30",
+        "purchase_price": 13.0,
+        "selling_price": 17.0,
+        "quantity": 150
+      },
+      {
+        "medicine_id": 72,
+        "batch_no": "HCP-I3",
+        "expiry_date": "2026-11-25",
+        "purchase_price": 10.0,
+        "selling_price": 13.0,
+        "quantity": 190
+      },
+      {
+        "medicine_id": 73,
+        "batch_no": "HCP-I4",
+        "expiry_date": "2027-05-18",
+        "purchase_price": 17.0,
+        "selling_price": 21.0,
+        "quantity": 120
+      },
+      {
+        "medicine_id": 74,
+        "batch_no": "HCP-I5",
+        "expiry_date": "2026-10-09",
+        "purchase_price": 5.0,
+        "selling_price": 7.0,
+        "quantity": 250
+      },
+      {
+        "medicine_id": 75,
+        "batch_no": "HCP-I6",
+        "expiry_date": "2027-01-29",
+        "purchase_price": 8.0,
+        "selling_price": 11.0,
+        "quantity": 210
+      }
+    ]
+  },
+
+  {
+    "supplier_name": "Tasnim Rahman",
+    "purchase_date": "2025-10-25",
+    "items": [
+      {
+        "medicine_id": 76,
+        "batch_no": "BCN-J1",
+        "expiry_date": "2027-06-19",
+        "purchase_price": 16.0,
+        "selling_price": 20.0,
+        "quantity": 160
+      },
+      {
+        "medicine_id": 77,
+        "batch_no": "BCN-J2",
+        "expiry_date": "2026-12-12",
+        "purchase_price": 9.0,
+        "selling_price": 12.0,
+        "quantity": 210
+      },
+      {
+        "medicine_id": 78,
+        "batch_no": "BCN-J3",
+        "expiry_date": "2026-08-30",
+        "purchase_price": 12.0,
+        "selling_price": 15.0,
+        "quantity": 180
+      },
+      {
+        "medicine_id": 79,
+        "batch_no": "BCN-J4",
+        "expiry_date": "2027-04-10",
+        "purchase_price": 14.0,
+        "selling_price": 18.0,
+        "quantity": 120
+      },
+      {
+        "medicine_id": 80,
+        "batch_no": "BCN-J5",
+        "expiry_date": "2027-02-22",
+        "purchase_price": 22.0,
+        "selling_price": 27.0,
+        "quantity": 90
+      },
+      {
+        "medicine_id": 81,
+        "batch_no": "BCN-J6",
+        "expiry_date": "2026-10-05",
+        "purchase_price": 5.0,
+        "selling_price": 8.0,
+        "quantity": 250
+      },
+      {
+        "medicine_id": 82,
+        "batch_no": "BCN-J6",
+        "expiry_date": "2026-10-05",
+        "purchase_price": 5.0,
+        "selling_price": 8.0,
+        "quantity": 250
+      },
+      {
+        "medicine_id": 83,
+        "batch_no": "BCN-J6",
+        "expiry_date": "2026-10-05",
+        "purchase_price": 5.0,
+        "selling_price": 8.0,
+        "quantity": 250
+      }
+    ]
+  }
+]

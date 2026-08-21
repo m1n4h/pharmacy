@@ -1,0 +1,203 @@
+[
+  {
+    "sale_date": "2025-11-01",
+    "discount_amount": 5,
+    "items": [
+      { "medicine_id": 12, "quantity": 12 },
+      { "medicine_id": 3, "quantity": 10 }
+    ]
+  },
+  {
+    "sale_date": "2025-11-02",
+    "discount_amount": 0,
+    "items": [{ "medicine_id": 7, "quantity": 15 }]
+  },
+  {
+    "sale_date": "2025-11-03",
+    "discount_amount": 10,
+    "items": [
+      { "medicine_id": 14, "quantity": 12 },
+      { "medicine_id": 22, "quantity": 14 },
+      { "medicine_id": 55, "quantity": 15 }
+    ]
+  },
+  {
+    "sale_date": "2025-11-04",
+    "discount_amount": 0,
+    "items": [{ "medicine_id": 5, "quantity": 13 }]
+  },
+  {
+    "sale_date": "2025-11-05",
+    "discount_amount": 0,
+    "items": [
+      { "medicine_id": 41, "quantity": 8 },
+      { "medicine_id": 28, "quantity": 5 }
+    ]
+  },
+  {
+    "sale_date": "2025-11-06",
+    "discount_amount": 0,
+    "items": [{ "medicine_id": 18, "quantity": 1 }]
+  },
+  {
+    "sale_date": "2025-11-07",
+    "discount_amount": 0,
+    "items": [
+      { "medicine_id": 9, "quantity": 12 },
+      { "medicine_id": 46, "quantity": 10 }
+    ]
+  },
+  {
+    "sale_date": "2025-11-08",
+    "discount_amount": 0,
+    "items": [{ "medicine_id": 27, "quantity": 12 }]
+  },
+  {
+    "sale_date": "2025-11-09",
+    "discount_amount": 0,
+    "items": [
+      { "medicine_id": 11, "quantity": 15 },
+      { "medicine_id": 37, "quantity": 12 }
+    ]
+  },
+  {
+    "sale_date": "2025-11-10",
+    "discount_amount": 0,
+    "items": [{ "medicine_id": 63, "quantity": 20 }]
+  },
+  {
+    "sale_date": "2025-11-11",
+    "discount_amount": 4,
+    "items": [
+      { "medicine_id": 44, "quantity": 10 },
+      { "medicine_id": 15, "quantity": 10 }
+    ]
+  },
+  {
+    "sale_date": "2025-11-12",
+    "discount_amount": 1,
+    "items": [{ "medicine_id": 20, "quantity": 13 }]
+  },
+  {
+    "sale_date": "2025-11-13",
+    "discount_amount": 0,
+    "items": [{ "medicine_id": 51, "quantity": 10 }]
+  },
+  {
+    "sale_date": "2025-11-14",
+    "discount_amount": 5,
+    "items": [
+      { "medicine_id": 66, "quantity": 20 },
+      { "medicine_id": 29, "quantity": 10 }
+    ]
+  },
+  {
+    "sale_date": "2025-11-15",
+    "discount_amount": 0,
+    "items": [{ "medicine_id": 8, "quantity": 12 }]
+  },
+  {
+    "sale_date": "2025-11-16",
+    "discount_amount": 7,
+    "items": [
+      { "medicine_id": 71, "quantity": 10 },
+      { "medicine_id": 3, "quantity": 20 },
+      { "medicine_id": 12, "quantity": 10 }
+    ]
+  },
+  {
+    "sale_date": "2025-11-17",
+    "discount_amount": 0,
+    "items": [{ "medicine_id": 33, "quantity": 10 }]
+  },
+  {
+    "sale_date": "2025-11-18",
+    "discount_amount": 9,
+    "items": [
+      { "medicine_id": 25, "quantity": 10 },
+      { "medicine_id": 40, "quantity": 10 },
+      { "medicine_id": 4, "quantity": 20 }
+    ]
+  },
+  {
+    "sale_date": "2025-11-19",
+    "discount_amount": 0,
+    "items": [{ "medicine_id": 27, "quantity": 10 }]
+  },
+  {
+    "sale_date": "2025-11-20",
+    "discount_amount": 2,
+    "items": [
+      { "medicine_id": 82, "quantity": 30 },
+      { "medicine_id": 13, "quantity": 12 }
+    ]
+  },
+  {
+    "sale_date": "2025-11-21",
+    "discount_amount": 0,
+    "items": [{ "medicine_id": 14, "quantity": 25 }]
+  },
+  {
+    "sale_date": "2025-11-22",
+    "discount_amount": 50,
+    "items": [
+      { "medicine_id": 44, "quantity": 18 },
+      { "medicine_id": 36, "quantity": 20 },
+      { "medicine_id": 28, "quantity": 15 }
+    ]
+  },
+  {
+    "sale_date": "2025-11-23",
+    "discount_amount": 0,
+    "items": [{ "medicine_id": 57, "quantity": 15 }]
+  },
+  {
+    "sale_date": "2025-11-24",
+    "discount_amount": 3,
+    "items": [
+      { "medicine_id": 21, "quantity": 10 },
+      { "medicine_id": 50, "quantity": 14 }
+    ]
+  },
+  {
+    "sale_date": "2025-11-25",
+    "discount_amount": 0,
+    "items": [{ "medicine_id": 11, "quantity": 5 }]
+  },
+  {
+    "sale_date": "2025-11-26",
+    "discount_amount": 4,
+    "items": [
+      { "medicine_id": 78, "quantity": 7 },
+      { "medicine_id": 32, "quantity": 12 }
+    ]
+  },
+  {
+    "sale_date": "2025-11-27",
+    "discount_amount": 0,
+    "items": [{ "medicine_id": 65, "quantity": 8 }]
+  },
+  {
+    "sale_date": "2025-11-28",
+    "discount_amount": 8,
+    "items": [
+      { "medicine_id": 26, "quantity": 10 },
+      { "medicine_id": 55, "quantity": 20 },
+      { "medicine_id": 17, "quantity": 15 }
+    ]
+  },
+  {
+    "sale_date": "2025-11-29",
+    "discount_amount": 0,
+    "items": [{ "medicine_id": 3, "quantity": 15 }]
+  },
+  {
+    "sale_date": "2025-11-30",
+    "discount_amount": 10,
+    "items": [
+      { "medicine_id": 41, "quantity": 12 },
+      { "medicine_id": 73, "quantity": 10 },
+      { "medicine_id": 22, "quantity": 20 }
+    ]
+  }
+]

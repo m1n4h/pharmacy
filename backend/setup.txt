@@ -1,0 +1,27 @@
+Admin user created successfully!
+Email: lamsi@gmail.com
+Role: admin
+password : pharmarcylams
+
+
+
+# start the application 
+uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
+
+
+also create the complet website frontend fo user where useer will able to browser our product , make the order , purchases, h
+istory the of product purchase, the sectio is like the home page , 
+Dashboard & HomeDaily sales total and quick statsLow
+ stock warningsExpiring drug alertsQuick links to new salesP
+ oint of Sale (POS) & DispensingFast item search and barcode
+  scanningPrescription entry and validationCash, card, and m
+  obile payment processingReceipt printing and customer 
+  taggingInventory & StockMedicine list with prices and batch 
+  numbersExpiration date trackingStock adjustments and low-level
+   flagsSupplier order and restock logsPatient / Customer RecordsName,
+    phone, and address directoryPast purchase history and refill
+     trackingAllergy and chronic medication notesReports &
+      AnalyticsDaily, weekly, and monthly sales summariesProfit 
+      and loss overviewMost sold drugs and inventory value reportsIf
+       you'd like, let me know:Are you designing a database, building a
+ mobile/web UI, or planning user roles (cashier vs. pharmacist)?
