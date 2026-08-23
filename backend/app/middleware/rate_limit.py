@@ -3,6 +3,7 @@ from starlette.middleware.base import BaseHTTPMiddleware
 from datetime import datetime, timedelta
 from collections import defaultdict
 from typing import Dict, Tuple
+import os
 import logging
 
 logger = logging.getLogger(__name__)
@@ -76,6 +77,10 @@ class RateLimitMiddleware(BaseHTTPMiddleware):
         path = request.url.path
         last_segment = path.rsplit("/", 1)[-1]
         if path in ("/", "/health", "/docs", "/redoc", "/openapi.json") or "." in last_segment:
+            return await call_next(request)
+
+        # Skip rate limiting in test environment
+        if os.environ.get("TESTING") == "1" or os.environ.get("APP_ENV") == "test":
             return await call_next(request)
         
         ip = self._get_client_ip(request)

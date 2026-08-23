@@ -42,25 +42,27 @@ async function loadBackups() {
 }
 
 async function createBackup() {
-    if (!confirm('Unda backup mpya ya database?')) return;
+    const result = await SwalAlert.confirm('Unda backup mpya ya database?');
+    if (!result.isConfirmed) return;
     try {
         const res = await api.createBackup();
-        if (res.success === false) { alert('Failed: ' + (res.error || res.message)); return; }
-        alert('Backup imeundwa!');
+        if (res.success === false) { SwalAlert.error(res.error || res.message); return; }
+        SwalAlert.success('Backup imeundwa!');
         loadBackups();
     } catch (e) {
-        alert('Failed: ' + e.message);
+        SwalAlert.error(e.message);
     }
 }
 
 async function restoreBackup(filename) {
-    if (!confirm(`Rejesha database kutoka "${filename}"? Hii itafuta data ya sasa kabisa!`)) return;
+    const result = await SwalAlert.confirm(`Rejesha database kutoka "${filename}"? Hii itafuta data ya sasa kabisa!`);
+    if (!result.isConfirmed) return;
     try {
         const res = await api.restoreBackup(filename);
-        if (res.success === false) { alert('Failed: ' + (res.error || res.message)); return; }
-        alert('Restore imefanikiwa! Ingia tena.');
+        if (res.success === false) { SwalAlert.error(res.error || res.message); return; }
+        SwalAlert.success('Restore imefanikiwa! Ingia tena.');
     } catch (e) {
-        alert('Failed: ' + e.message);
+        SwalAlert.error(e.message);
     }
 }
 

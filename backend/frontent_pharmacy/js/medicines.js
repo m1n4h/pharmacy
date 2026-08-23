@@ -84,7 +84,7 @@ async function aiSuggestMedicine() {
     const hint = document.getElementById('aiSuggestHint');
     const name = nameInput.value.trim();
     if (!name) {
-        alert('Andika jina la dawa kwanza (mf. "Amoxicillin 500mg capsules")');
+        SwalAlert.warning('Andika jina la dawa kwanza (mf. "Amoxicillin 500mg capsules")');
         nameInput.focus();
         return;
     }
@@ -126,38 +126,41 @@ async function saveMedicine() {
         form: document.getElementById('med_form').value,
         unit: document.getElementById('med_unit').value,
         strength: document.getElementById('med_strength').value,
-        barcode: document.getElementById('med_barcode').value
+        barcode: document.getElementById('med_barcode').value,
+        default_purchase_price: parseFloat(document.getElementById('med_purchase_price')?.value) || 0,
+        default_selling_price: parseFloat(document.getElementById('med_selling_price')?.value) || 0
     };
     
     if (!data.name) {
-        alert('Medicine name is required!');
+        SwalAlert.warning('Medicine name is required!');
         return;
     }
     
     try {
         if (editingMedicineId) {
             await api.updateMedicine(editingMedicineId, data);
-            alert('Medicine updated successfully!');
+            SwalAlert.success('Medicine updated successfully!');
         } else {
             await api.createMedicine(data);
-            alert('Medicine added successfully!');
+            SwalAlert.success('Medicine added successfully!');
         }
         editingMedicineId = null;
         bootstrap.Modal.getInstance(document.getElementById('addMedicineModal')).hide();
         navigateTo('medicines');
     } catch (error) {
-        alert('Failed: ' + error.message);
+        SwalAlert.error(error.message);
     }
 }
 
 async function deleteMedicine(id) {
-    if (!confirm('Are you sure you want to delete this medicine?')) return;
+    const result = await SwalAlert.confirm('Are you sure you want to delete this medicine?');
+    if (!result.isConfirmed) return;
     try {
         await api.deleteMedicine(id);
-        alert('Medicine deleted successfully!');
+        SwalAlert.success('Medicine deleted successfully!');
         navigateTo('medicines');
     } catch (error) {
-        alert('Failed to delete medicine: ' + error.message);
+        SwalAlert.error(error.message);
     }
 }
 
@@ -174,12 +177,14 @@ async function editMedicine(id) {
         set('med_unit', med.unit);
         set('med_strength', med.strength);
         set('med_barcode', med.barcode);
+        set('med_purchase_price', med.default_purchase_price);
+        set('med_selling_price', med.default_selling_price);
         document.getElementById('aiSuggestHint').textContent = '';
         const btn = document.getElementById('medSaveBtn');
         if (btn) btn.innerHTML = '<i class="fas fa-save"></i> Update Medicine';
         new bootstrap.Modal(document.getElementById('addMedicineModal')).show();
     } catch (error) {
-        alert('Failed to load medicine: ' + error.message);
+        SwalAlert.error(error.message);
     }
 }
 
@@ -187,11 +192,11 @@ async function viewBatches(medicineId) {
     try {
         const batches = await api.getBatches(medicineId);
         const medicine = medicinesData.find(m => m.id === medicineId);
-        alert(`Batches for ${medicine?.name || 'Medicine'}:\n${batches.map(b => 
+        SwalAlert.success(`Batches for ${medicine?.name || 'Medicine'}:\n${batches.map(b => 
             `Batch: ${b.batch_no}, Qty: ${b.quantity}, Exp: ${b.expiry_date}`
         ).join('\n') || 'No batches found'}`);
     } catch (error) {
-        alert('Failed to load batches: ' + error.message);
+        SwalAlert.error(error.message);
     }
 }
 

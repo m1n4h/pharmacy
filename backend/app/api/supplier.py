@@ -3,7 +3,7 @@ from sqlalchemy.orm import Session
 
 from app.core.deps import get_current_user
 from app.db.db import get_db
-from app.schemas.supplier import SupplierCreate
+from app.schemas.supplier import SupplierCreate, SupplierUpdate
 from app.services.supplier_service import SupplierService
 from app.utils.pagination import Paginator
 from app.models.supplier import Supplier
@@ -61,3 +61,50 @@ def list_suppliers(
             "pagination": paginated["pagination"]
         }
     }
+
+
+@router.put("/{supplier_id}")
+def update_supplier(
+    supplier_id: int,
+    payload: SupplierUpdate,
+    db: Session = Depends(get_db),
+    current_user = Depends(get_current_user)
+):
+    supplier = SupplierService.update_supplier(db, supplier_id, payload)
+
+    if not supplier:
+        return {"success": False, "message": "Supplier not found", "error": "NOT_FOUND"}
+
+    from app.services.activity_service import ActivityService
+    ActivityService.log(
+        db, action="UPDATE", module="suppliers",
+        details=f"Updated supplier #{supplier_id} ({supplier.name})",
+        user=current_user
+    )
+
+    return {
+        "success": True,
+        "message": "Supplier updated successfully",
+        "data": supplier
+    }
+
+
+@router.delete("/{supplier_id}")
+def delete_supplier(
+    supplier_id: int,
+    db: Session = Depends(get_db),
+    current_user = Depends(get_current_user)
+):
+    supplier = SupplierService.delete_supplier(db, supplier_id)
+
+    if not supplier:
+        return {"success": False, "message": "Supplier not found", "error": "NOT_FOUND"}
+
+    from app.services.activity_service import ActivityService
+    ActivityService.log(
+        db, action="DELETE", module="suppliers",
+        details=f"Deleted supplier #{supplier_id} ({supplier.name})",
+        user=current_user
+    )
+
+    return {"success": True, "message": "Supplier deleted successfully"}

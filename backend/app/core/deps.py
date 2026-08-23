@@ -85,7 +85,7 @@ def require_module(module: str):
         db: Session = Depends(get_db),
     ):
         # Admins always have full access
-        if current_user.role != "admin" and not PermissionService.has_module(
+        if current_user.role not in ("admin", "superadmin") and not PermissionService.has_module(
             db, current_user.role, module
         ):
             raise HTTPException(
@@ -93,6 +93,31 @@ def require_module(module: str):
                 detail={
                     "success": False,
                     "message": "You do not have permission to access this module",
+                    "error": "FORBIDDEN"
+                }
+            )
+        return current_user
+
+    return checker
+
+
+def require_permission(module: str, permission_type: str = "read"):
+    """Dependency factory: 403 if the user's role lacks specific permission type for a module."""
+    from app.services.permission_service import PermissionService
+
+    def checker(
+        current_user: User = Depends(get_current_user),
+        db: Session = Depends(get_db),
+    ):
+        # Admins always have full access
+        if current_user.role not in ("admin", "superadmin") and not PermissionService.has_permission(
+            db, current_user.role, module, permission_type
+        ):
+            raise HTTPException(
+                status_code=status.HTTP_403_FORBIDDEN,
+                detail={
+                    "success": False,
+                    "message": f"You do not have {permission_type} permission for {module}",
                     "error": "FORBIDDEN"
                 }
             )

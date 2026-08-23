@@ -2,7 +2,7 @@ from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 
 from app.models.purchase import Purchase
-from app.schemas.purchase import PurchaseCreate, PurchaseResponse
+from app.schemas.purchase import PurchaseCreate, PurchaseUpdate, PurchaseResponse
 from typing import List
 from app.services.purchase_service import PurchaseService
 from app.core.deps import get_current_user
@@ -200,3 +200,59 @@ def get_purchase(
             ]
         }
     }
+
+
+@router.put("/{purchase_id}")
+def update_purchase(
+    purchase_id: int,
+    payload: PurchaseUpdate,
+    db: Session = Depends(get_db),
+    current_user = Depends(get_current_user)
+):
+    purchase = PurchaseService.update_purchase(db, purchase_id, payload)
+
+    if not purchase:
+        return {"success": False, "message": "Purchase not found", "error": "NOT_FOUND"}
+
+    from app.services.activity_service import ActivityService
+    ActivityService.log(
+        db, action="UPDATE", module="purchases",
+        details=f"Updated purchase #{purchase_id} ({purchase.invoice_number})",
+        user=current_user
+    )
+
+    return {
+        "success": True,
+        "message": "Purchase updated successfully",
+        "data": {
+            "id": purchase.id,
+            "invoice_number": purchase.invoice_number,
+            "supplier_name": purchase.supplier_name,
+            "purchase_date": purchase.purchase_date,
+            "total_amount": purchase.total_amount,
+            "currency_code": purchase.currency_code,
+            "currency_amount": purchase.currency_amount,
+            "currency_rate": purchase.currency_rate
+        }
+    }
+
+
+@router.delete("/{purchase_id}")
+def delete_purchase(
+    purchase_id: int,
+    db: Session = Depends(get_db),
+    current_user = Depends(get_current_user)
+):
+    purchase = PurchaseService.delete_purchase(db, purchase_id)
+
+    if not purchase:
+        return {"success": False, "message": "Purchase not found", "error": "NOT_FOUND"}
+
+    from app.services.activity_service import ActivityService
+    ActivityService.log(
+        db, action="DELETE", module="purchases",
+        details=f"Deleted purchase #{purchase_id} ({purchase.invoice_number})",
+        user=current_user
+    )
+
+    return {"success": True, "message": "Purchase deleted and stock restored"}

@@ -19,6 +19,12 @@ class PurchaseCreate(BaseModel):
     currency_code: str | None = "TZS"
     items: List[PurchaseItemCreate]
 
+
+class PurchaseUpdate(BaseModel):
+    supplier_name: str | None = None
+    purchase_date: date | None = None
+    currency_code: str | None = None
+
 # Response Schemas
 class PurchaseItemResponse(BaseModel):
     id: int

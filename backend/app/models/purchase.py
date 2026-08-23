@@ -1,6 +1,7 @@
-from sqlalchemy import Column, Integer, String, Date, Float, DateTime, func
+from sqlalchemy import Column, Integer, String, Date, Float, DateTime, ForeignKey, func
 from sqlalchemy.orm import relationship
 from app.db.base_class import Base
+
 
 class Purchase(Base):
     __tablename__ = "purchases"
@@ -8,11 +9,15 @@ class Purchase(Base):
     id = Column(Integer, primary_key=True, index=True)
     invoice_number = Column(String, nullable=False)
     supplier_name = Column(String, nullable=True)
+    supplier_id = Column(Integer, ForeignKey("suppliers.id"), nullable=True, index=True)
+    branch_id = Column(Integer, ForeignKey("branches.id"), nullable=True, index=True)
     purchase_date = Column(Date, nullable=False)
     total_amount = Column(Float, nullable=False, default=0)
     currency_code = Column(String(3), nullable=True, default="TZS")
     currency_amount = Column(Float, nullable=True, default=0)
     currency_rate = Column(Float, nullable=True, default=1.0)
+    status = Column(String, default="received")  # ordered, received, partial, cancelled
+    notes = Column(String, nullable=True)
     created_at = Column(DateTime, nullable=False, server_default=func.now())
 
     items = relationship("PurchaseItem", back_populates="purchase", cascade="all, delete")

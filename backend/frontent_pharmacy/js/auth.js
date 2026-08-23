@@ -103,15 +103,15 @@ async function handleLogin(event) {
 }
 
 async function handleLogout() {
-    if (confirm('Are you sure you want to logout?')) {
-        try {
-            await api.logout();
-        } catch (error) {
-            console.error('Logout error:', error);
-        }
-        localStorage.clear();
-        window.location.reload();
+    const result = await SwalAlert.confirm('Are you sure you want to logout?');
+    if (!result.isConfirmed) return;
+    try {
+        await api.logout();
+    } catch (error) {
+        console.error('Logout error:', error);
     }
+    localStorage.clear();
+    window.location.reload();
 }
 
 async function checkAuth() {

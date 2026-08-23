@@ -111,7 +111,7 @@ async function submitExpiryAction() {
         reason: document.getElementById('exp_act_reason').value || null
     };
     if (!data.quantity || data.quantity <= 0) {
-        alert('Weka kiasi sahihi!');
+        SwalAlert.warning('Weka kiasi sahihi!');
         return;
     }
     try {
@@ -119,7 +119,7 @@ async function submitExpiryAction() {
         bootstrap.Modal.getInstance(document.getElementById('expiryActionModal')).hide();
         renderExpiry();
     } catch (error) {
-        alert('Failed: ' + error.message);
+        SwalAlert.error(error.message);
     }
 }
 

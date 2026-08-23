@@ -3,20 +3,22 @@ from sqlalchemy import func, and_
 from datetime import date, datetime
 from app.models.expense import Expense
 from app.utils.pagination import Paginator
+from app.utils.helpers import to_dict, get_attr
 
 
 class ExpenseService:
 
     @staticmethod
     def create_expense(db: Session, data):
+        d = to_dict(data)
         expense = Expense(
-            category=data.category,
-            description=data.description,
-            amount=data.amount,
-            date=data.date,
-            payment_method=data.payment_method,
-            reference=data.reference,
-            notes=data.notes,
+            category=d.get("category"),
+            description=d.get("description"),
+            amount=d.get("amount"),
+            date=d.get("date"),
+            payment_method=d.get("payment_method"),
+            reference=d.get("reference"),
+            notes=d.get("notes"),
             created_at=datetime.now()
         )
         db.add(expense)
@@ -59,10 +61,14 @@ class ExpenseService:
         expense = db.query(Expense).filter(Expense.id == expense_id).first()
         if not expense:
             return None
+        d = to_dict(data)
         for field in ["category", "description", "amount", "date", "payment_method", "reference", "notes"]:
-            val = getattr(data, field, None)
-            if val is not None:
-                setattr(expense, field, val)
+            if field in d:
+                setattr(expense, field, d[field])
+            else:
+                val = get_attr(data, field, None)
+                if val is not None:
+                    setattr(expense, field, val)
         db.commit()
         db.refresh(expense)
         return expense

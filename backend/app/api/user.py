@@ -14,7 +14,7 @@ def list_users(
     db: Session = Depends(get_db),
     current_user = Depends(get_current_user)
 ):
-    if current_user.role != "admin":
+    if current_user.role not in ("admin", "superadmin"):
         return {"success": False, "message": "Permission denied", "error": "FORBIDDEN"}
 
     users = UserService.list_users(db)
@@ -28,7 +28,8 @@ def list_users(
                     "email": u.email,
                     "full_name": u.full_name,
                     "role": u.role,
-                    "is_active": u.is_active == 1
+                    "is_active": u.is_active == 1,
+                    "is_superuser": getattr(u, 'is_superuser', 0) == 1
                 }
                 for u in users
             ]
@@ -42,8 +43,12 @@ def toggle_active_user(
     db: Session = Depends(get_db),
     current_user = Depends(get_current_user)
 ):
-    if current_user.role != "admin":
+    if current_user.role != "admin" and current_user.role != "superadmin":
         return {"success": False, "message": "Permission denied", "error": "FORBIDDEN"}
+
+    target = UserService.get_user_by_id(db, user_id)
+    if target and getattr(target, 'is_superuser', 0) == 1:
+        return {"success": False, "message": "Cannot modify the superuser account", "error": "SUPERUSER_PROTECTED"}
 
     user, error = UserService.toggle_active(db, user_id)
     if error:
@@ -69,8 +74,8 @@ def create_user_endpoint(
     current_user = Depends(get_current_user)
 ):
 
-    # Allow only admin to create users
-    if current_user.role != "admin":
+    # Allow only admin or superadmin to create users
+    if current_user.role not in ("admin", "superadmin"):
         return {
             "success": False,
             "message": "Permission denied",
@@ -117,7 +122,7 @@ def delete_user_endpoint(
     db: Session = Depends(get_db),
     current_user = Depends(get_current_user)
 ):
-    if current_user.role != "admin":
+    if current_user.role != "admin" and current_user.role != "superadmin":
         return {"success": False, "message": "Permission denied", "error": "FORBIDDEN"}
 
     if current_user.id == user_id:
@@ -127,8 +132,11 @@ def delete_user_endpoint(
             "error": "SELF_DELETE"
         }
 
-    # Prevent deleting the last remaining active admin
     target = UserService.get_user_by_id(db, user_id)
+    if target and getattr(target, 'is_superuser', 0) == 1:
+        return {"success": False, "message": "Cannot delete the superuser account", "error": "SUPERUSER_PROTECTED"}
+
+    # Prevent deleting the last remaining active admin
     if target and target.role == "admin":
         if UserService.count_active_admins(db, exclude_user_id=user_id) == 0:
             return {

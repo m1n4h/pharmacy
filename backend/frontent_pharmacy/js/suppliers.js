@@ -55,17 +55,17 @@ async function saveSupplier() {
     };
     
     if (!data.name) {
-        alert('Supplier name is required!');
+        SwalAlert.warning('Supplier name is required!');
         return;
     }
     
     try {
         await api.createSupplier(data);
         bootstrap.Modal.getInstance(document.getElementById('addSupplierModal')).hide();
-        alert('Supplier added successfully!');
+        SwalAlert.success('Supplier added successfully!');
         navigateTo('suppliers');
     } catch (error) {
-        alert('Failed to add supplier: ' + error.message);
+        SwalAlert.error(error.message);
     }
 }
 

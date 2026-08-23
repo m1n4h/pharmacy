@@ -6,7 +6,7 @@ import logging
 from app.core.config import get_settings
 from app.utils.settings import initialize_settings
 
-from app.api import auth, user, medicine, batch, inventory, purchase, sales, invoice, sales_report, dashboard, supplier, settings, prescription, activity, permission, currency, expense, notification, expiry, report, backup
+from app.api import auth, user, medicine, batch, inventory, purchase, sales, invoice, sales_report, dashboard, supplier, settings, prescription, activity, permission, currency, expense, notification, expiry, report, backup, branch, category, manufacturer, customer, stock_adjustment, return_api, stock_transfer, disposal
 from app.middleware.rate_limit import RateLimitMiddleware
 from app.middleware.security_headers import SecurityHeadersMiddleware
 from app.middleware.request_logging import RequestLoggingMiddleware
@@ -117,6 +117,14 @@ app.include_router(notification.router)
 app.include_router(expiry.router)
 app.include_router(report.router)
 app.include_router(backup.router)
+app.include_router(branch.router)
+app.include_router(category.router)
+app.include_router(manufacturer.router)
+app.include_router(customer.router)
+app.include_router(stock_adjustment.router)
+app.include_router(return_api.router)
+app.include_router(stock_transfer.router)
+app.include_router(disposal.router)
 
 @app.get("/health", tags=["Health"])
 def health_check():
@@ -130,7 +138,21 @@ def health_check():
 # Serve the pharmacy frontend (self-contained deployment).
 # API routes above take priority; everything else serves static files from frontent_pharmacy.
 from fastapi.staticfiles import StaticFiles
+from fastapi import Request
+from starlette.middleware.base import BaseHTTPMiddleware
 from pathlib import Path
+
+class NoCacheMiddleware(BaseHTTPMiddleware):
+    async def dispatch(self, request, call_next):
+        response = await call_next(request)
+        path = request.url.path
+        if path.endswith('.js') or path.endswith('.css') or path.endswith('.html') or path == '/':
+            response.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate'
+            response.headers['Pragma'] = 'no-cache'
+            response.headers['Expires'] = '0'
+        return response
+
+app.add_middleware(NoCacheMiddleware)
 
 FRONTEND_DIR = Path(__file__).resolve().parent.parent / "frontent_pharmacy"
 if FRONTEND_DIR.exists():

@@ -7,7 +7,7 @@ class UserCreateSchema(BaseModel):
     email: EmailStr
     password: str
     full_name: str = ""
-    role: Literal["admin", "staff"] = "staff"
+    role: Literal["admin", "staff", "pharmacist", "cashier", "accountant"] = "staff"
 
     @field_validator("password")
     @classmethod

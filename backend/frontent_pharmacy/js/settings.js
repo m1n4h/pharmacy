@@ -17,56 +17,86 @@ async function renderSettings() {
                 <div class="col-lg-7 mb-4">
                     <div class="card">
                         <div class="card-header bg-primary text-white">
-                            <i class="fas fa-cog me-2"></i>System Settings
+                            <i class="fas fa-cog me-2"></i>Pharmacy Profile
                         </div>
                         <div class="card-body">
-                            <div class="mb-3">
-                                <label class="form-label">Pharmacy Name *</label>
-                                <input type="text" id="set_pharmacy_name" class="form-control" value="${s.pharmacy_name || ''}" required>
+                            <div class="row g-3">
+                                <div class="col-md-8">
+                                    <label class="form-label required">Pharmacy Name</label>
+                                    <input type="text" id="set_pharmacy_name" class="form-control" value="${s.pharmacy_name || ''}" required>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label">Registration No.</label>
+                                    <input type="text" id="set_registration_number" class="form-control" value="${s.registration_number || ''}">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Region</label>
+                                    <input type="text" id="set_region" class="form-control" value="${s.region || ''}">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">District</label>
+                                    <input type="text" id="set_district" class="form-control" value="${s.district || ''}">
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label">Address</label>
+                                    <input type="text" id="set_address" class="form-control" value="${s.address || ''}">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Phone</label>
+                                    <input type="text" id="set_phone" class="form-control" value="${s.phone || ''}">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Email</label>
+                                    <input type="email" id="set_email" class="form-control" value="${s.email || ''}">
+                                </div>
                             </div>
-                            <div class="mb-3">
-                                <label class="form-label">Address</label>
-                                <input type="text" id="set_address" class="form-control" value="${s.address || ''}">
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label">Phone</label>
-                                <input type="text" id="set_phone" class="form-control" value="${s.phone || ''}">
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label">Email</label>
-                                <input type="email" id="set_email" class="form-control" value="${s.email || ''}">
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label">Invoice Footer</label>
-                                <textarea id="set_invoice_footer" class="form-control" rows="2">${s.invoice_footer || ''}</textarea>
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label">Default Currency</label>
-                                <select id="set_default_currency" class="form-control">
-                                    ${currencies.map(c => `
-                                        <option value="${c.code}" ${(s.default_currency || 'TZS') === c.code ? 'selected' : ''}>
-                                            ${c.code} - ${c.name || ''}
-                                        </option>
-                                    `).join('') || '<option value="TZS">TZS</option>'}
-                                </select>
-                                <small class="text-muted">Fedha za kigeni zitabadilishwa kuwa TZS kulingana na exchange rates.</small>
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label">Expiry Warning (days before expiry)</label>
-                                <input type="number" id="set_expiry_warning_days" class="form-control" min="1" value="${s.expiry_warning_days || 30}">
-                                <small class="text-muted">Dawa zitakazoisha kati ya siku hizi zitaonyeshwa kama "Expiring Soon".</small>
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label">Low Stock Threshold</label>
-                                <input type="number" id="set_low_stock_threshold" class="form-control" min="0" value="${s.low_stock_threshold || 10}">
-                                <small class="text-muted">Dawa zilizo chini ya kiasi hiki zitaonyeshwa kama "Low Stock".</small>
-                            </div>
-                            <button class="btn btn-primary w-100" onclick="saveSettings()">
-                                <i class="fas fa-save"></i> Save Settings
-                            </button>
                         </div>
                     </div>
+
+                    <div class="card mt-3">
+                        <div class="card-header bg-info text-white">
+                            <i class="fas fa-sliders-h me-2"></i>System Configuration
+                        </div>
+                        <div class="card-body">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label class="form-label">Default Currency</label>
+                                    <select id="set_default_currency" class="form-select">
+                                        ${currencies.map(c => `
+                                            <option value="${c.code}" ${(s.default_currency || 'TZS') === c.code ? 'selected' : ''}>
+                                                ${c.code} - ${c.name || ''}
+                                            </option>
+                                        `).join('') || '<option value="TZS">TZS</option>'}
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Tax/VAT Rate (%)</label>
+                                    <input type="number" id="set_tax_rate" class="form-control" min="0" max="100" step="0.1" value="${s.tax_rate || 0}">
+                                    <small class="text-muted">Applied to sales if > 0</small>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Expiry Warning (days)</label>
+                                    <input type="number" id="set_expiry_warning_days" class="form-control" min="1" value="${s.expiry_warning_days || 30}">
+                                    <small class="text-muted">Medicines expiring within this period shown as warnings</small>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Low Stock Threshold</label>
+                                    <input type="number" id="set_low_stock_threshold" class="form-control" min="0" value="${s.low_stock_threshold || 10}">
+                                    <small class="text-muted">Medicines below this quantity shown as low stock</small>
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label">Invoice Footer</label>
+                                    <textarea id="set_invoice_footer" class="form-control" rows="2">${s.invoice_footer || ''}</textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-primary w-100 mt-3" onclick="saveSettings()">
+                        <i class="fas fa-save me-1"></i>Save All Settings
+                    </button>
                 </div>
+
                 <div class="col-lg-5 mb-4">
                     <div class="card">
                         <div class="card-header bg-success text-white">
@@ -109,10 +139,14 @@ async function saveSettings() {
         invoice_footer: document.getElementById('set_invoice_footer').value,
         default_currency: document.getElementById('set_default_currency').value,
         expiry_warning_days: parseInt(document.getElementById('set_expiry_warning_days').value) || 30,
-        low_stock_threshold: parseInt(document.getElementById('set_low_stock_threshold').value) || 10
+        low_stock_threshold: parseInt(document.getElementById('set_low_stock_threshold').value) || 10,
+        tax_rate: parseFloat(document.getElementById('set_tax_rate').value) || 0,
+        registration_number: document.getElementById('set_registration_number').value,
+        region: document.getElementById('set_region').value,
+        district: document.getElementById('set_district').value,
     };
     if (!data.pharmacy_name) {
-        alert('Pharmacy name inahitajika!');
+        SwalAlert.warning('Pharmacy name is required');
         return;
     }
     try {
@@ -120,11 +154,11 @@ async function saveSettings() {
         if (window.APP_CONFIG) {
             window.APP_CONFIG.defaultCurrency = data.default_currency;
         }
-        alert('Settings saved successfully!');
+        SwalAlert.success('Settings saved successfully!');
         await loadAppConfig();
         renderSettings();
     } catch (error) {
-        alert('Failed to save settings: ' + error.message);
+        SwalAlert.error('Failed to save settings: ' + error.message);
     }
 }
 
@@ -139,19 +173,19 @@ async function saveCurrencyRates() {
         }
     });
     if (rates.length === 0) {
-        alert('Hakuna exchange rates za kuhifadhi.');
+        SwalAlert.warning('No exchange rates to save');
         return;
     }
     try {
         const res = await api.updateCurrencyRates(rates);
         if (res && res.success === false) {
-            alert('Imeshindikana: ' + (res.message || 'Unknown error'));
+            SwalAlert.error('Failed: ' + (res.message || 'Unknown error'));
             return;
         }
-        alert('Exchange rates zimehifadhiwa!');
+        SwalAlert.success('Exchange rates saved!');
         await loadAppConfig();
     } catch (error) {
-        alert('Failed to save rates: ' + error.message);
+        SwalAlert.error('Failed to save rates: ' + error.message);
     }
 }
 

@@ -9,8 +9,9 @@ class User(Base):
     email = Column(String, unique=True, index=True, nullable=False)
     full_name = Column(String, nullable=True)
     hashed_password = Column(String, nullable=False)
-    role = Column(String, default="staff")  # 'admin' or 'staff'
+    role = Column(String, default="staff")  # 'admin' or 'staff' or 'superadmin'
     is_active = Column(Integer, default=1)  # 1=true, 0=false
-    
+    is_superuser = Column(Integer, default=0)  # 1=superadmin, cannot be edited/deleted
+
     refresh_tokens = relationship("RefreshToken", back_populates="user")
     activities = relationship("ActivityLog", back_populates="user")

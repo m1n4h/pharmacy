@@ -9,6 +9,14 @@ class SupplierCreate(BaseModel):
     address: str | None = None
 
 
+class SupplierUpdate(BaseModel):
+    name: str | None = None
+    company_name: str | None = None
+    phone: str | None = None
+    email: str | None = None
+    address: str | None = None
+
+
 class SupplierResponse(BaseModel):
     id: int
     name: str

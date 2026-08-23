@@ -17,6 +17,8 @@ class MedicineBase(BaseModel):
     strength: str | None = None
     barcode: str | None = None
     image_url: str | None = None
+    default_purchase_price: float | None = 0
+    default_selling_price: float | None = 0
 
 
 class MedicineCreateSchema(MedicineBase):
@@ -33,6 +35,8 @@ class MedicineUpdateSchema(BaseModel):
     strength: str | None = None
     barcode: str | None = None
     image_url: str | None = None
+    default_purchase_price: float | None = None
+    default_selling_price: float | None = None
 
 
 class MedicineResponse(BaseModel):
@@ -46,6 +50,8 @@ class MedicineResponse(BaseModel):
     strength: str | None
     barcode: str | None
     image_url: str | None
+    default_purchase_price: float | None
+    default_selling_price: float | None
 
     class Config:
         from_attributes = True

@@ -31,21 +31,20 @@ async function renderUsers() {
                         ${users.map(u => `
                             <tr>
                                 <td>${u.id}</td>
-                                <td>${u.full_name || '-'}</td>
+                                <td>${u.full_name || '-'} ${u.is_superuser ? '<span class="badge bg-dark ms-1">SUPERUSER</span>' : ''}</td>
                                 <td>${u.email}</td>
-                                <td><span class="badge ${u.role === 'admin' ? 'bg-danger' : 'bg-primary'}">${u.role}</span></td>
+                                <td><span class="badge ${u.role === 'admin' || u.role === 'superadmin' ? 'bg-danger' : 'bg-primary'}">${u.role}</span></td>
                                 <td>
                                     <span class="badge ${u.is_active ? 'bg-success' : 'bg-secondary'}">
                                         ${u.is_active ? 'Active' : 'Disabled'}
                                     </span>
                                 </td>
                                 <td class="text-nowrap">
-                                    <button class="btn btn-sm ${u.is_active ? 'btn-outline-warning' : 'btn-outline-success'} me-1" onclick="toggleUser(${u.id})">
-                                        ${u.is_active ? 'Disable' : 'Enable'}
-                                    </button>
-                                    <button class="btn btn-sm btn-outline-danger" onclick="deleteUser(${u.id}, '${(u.full_name || u.email).replace(/'/g, "\\'")}')">
-                                        Delete
-                                    </button>
+                                    ${u.is_superuser
+                                        ? '<span class="text-muted">Protected</span>'
+                                        : `<button class="btn btn-sm ${u.is_active ? 'btn-outline-warning' : 'btn-outline-success'} me-1" onclick="toggleUser(${u.id})">${u.is_active ? 'Disable' : 'Enable'}</button>
+                                           <button class="btn btn-sm btn-outline-danger" onclick="deleteUser(${u.id}, '${(u.full_name || u.email).replace(/'/g, "\\'")}')">Delete</button>`
+                                    }
                                 </td>
                             </tr>
                         `).join('') || '<tr><td colspan="6" class="text-center text-muted">No users found</td></tr>'}
@@ -75,49 +74,51 @@ async function saveUser() {
         role: document.getElementById('user_role').value
     };
     if (!data.email || !data.password || !data.full_name) {
-        alert('Jaza full name, email na password!');
+        SwalAlert.warning('Jaza full name, email na password!');
         return;
     }
     try {
         const result = await api.createUser(data);
         if (result && result.success === false) {
-            alert('Failed to create user: ' + (result.message || 'Unknown error'));
+            SwalAlert.error(result.message || 'Unknown error');
             return;
         }
         bootstrap.Modal.getInstance(document.getElementById('addUserModal')).hide();
-        alert('User created successfully!');
+        SwalAlert.success('User created successfully!');
         renderUsers();
     } catch (error) {
-        alert('Failed to create user: ' + error.message);
+        SwalAlert.error(error.message);
     }
 }
 
 async function toggleUser(id) {
-    if (!confirm('Badilisha hali ya user huyu (enable/disable)?')) return;
+    const result = await SwalAlert.confirm('Badilisha hali ya user huyu (enable/disable)?');
+    if (!result.isConfirmed) return;
     try {
         const result = await api.toggleUserActive(id);
         if (result && result.success === false) {
-            alert('Failed: ' + (result.message || 'Unknown error'));
+            SwalAlert.error(result.message || 'Unknown error');
             return;
         }
         renderUsers();
     } catch (error) {
-        alert('Failed to toggle user: ' + error.message);
+        SwalAlert.error(error.message);
     }
 }
 
 async function deleteUser(id, name) {
-    if (!confirm(`Futa user "${name}"? Hatua hii haiwezi kutenduliwa.`)) return;
+    const result = await SwalAlert.confirm(`Futa user "${name}"? Hatua hii haiwezi kutenduliwa.`);
+    if (!result.isConfirmed) return;
     try {
         const result = await api.deleteUser(id);
         if (result && result.success === false) {
-            alert('Imeshindikana: ' + (result.message || 'Unknown error'));
+            SwalAlert.error(result.message || 'Unknown error');
             return;
         }
-        alert('User amefutwa.');
+        SwalAlert.success('User amefutwa.');
         renderUsers();
     } catch (error) {
-        alert('Failed to delete user: ' + error.message);
+        SwalAlert.error(error.message);
     }
 }
 

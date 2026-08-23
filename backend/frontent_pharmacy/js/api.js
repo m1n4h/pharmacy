@@ -211,8 +211,13 @@ class PharmacyAPI {
     }
 
     // ========== SUPPLIERS ==========
-    async getSuppliers(limit = 100) {
-        return this._extractItems(await this._authFetch(`${API_BASE_URL}/suppliers/?limit=${limit}`));
+    async getSuppliers(limit = 100, search = '') {
+        const qs = search ? `limit=${limit}&search=${encodeURIComponent(search)}` : `limit=${limit}`;
+        return this._extractItems(await this._authFetch(`${API_BASE_URL}/suppliers/?${qs}`));
+    }
+
+    async searchMedicines(search = '', limit = 10) {
+        return this._extractItems(await this._authFetch(`${API_BASE_URL}/medicines/?search=${encodeURIComponent(search)}&limit=${limit}`));
     }
 
     async createSupplier(data) {
@@ -395,6 +400,14 @@ class PharmacyAPI {
     async getExpiryReport() {
         return this._authFetch(`${API_BASE_URL}/reports/expiry`);
     }
+    async getTopSelling(params = {}) {
+        const qs = new URLSearchParams(params).toString();
+        return this._authFetch(`${API_BASE_URL}/reports/top-selling?${qs}`);
+    }
+    async getExpenseTrending(params = {}) {
+        const qs = new URLSearchParams(params).toString();
+        return this._authFetch(`${API_BASE_URL}/reports/expense-trending?${qs}`);
+    }
     async exportReport(reportType, params = {}) {
         const qs = new URLSearchParams(params).toString();
         let response = await fetch(`${API_BASE_URL}/reports/export/${reportType}?${qs}`, { headers: this.getHeaders() });
@@ -457,6 +470,61 @@ class PharmacyAPI {
         if (!response.ok) throw new Error('Failed to download invoice');
         return response.blob();
     }
+
+    // ========== BRANCHES ==========
+    async createBranch(data) { return this._authFetch(`${API_BASE_URL}/branches/create`, { method: 'POST', body: JSON.stringify(data) }); }
+    async getBranches(search = '') { const qs = search ? `?search=${encodeURIComponent(search)}` : ''; return this._extractItems(await this._authFetch(`${API_BASE_URL}/branches/${qs}`)); }
+    async updateBranch(id, data) { return this._authFetch(`${API_BASE_URL}/branches/${id}`, { method: 'PUT', body: JSON.stringify(data) }); }
+    async deleteBranch(id) { return this._authFetch(`${API_BASE_URL}/branches/${id}`, { method: 'DELETE' }); }
+
+    // ========== CATEGORIES ==========
+    async createCategory(data) { return this._authFetch(`${API_BASE_URL}/categories/create`, { method: 'POST', body: JSON.stringify(data) }); }
+    async getCategories() { return this._extractItems(await this._authFetch(`${API_BASE_URL}/categories/`)); }
+    async updateCategory(id, data) { return this._authFetch(`${API_BASE_URL}/categories/${id}`, { method: 'PUT', body: JSON.stringify(data) }); }
+    async deleteCategory(id) { return this._authFetch(`${API_BASE_URL}/categories/${id}`, { method: 'DELETE' }); }
+
+    // ========== MANUFACTURERS ==========
+    async createManufacturer(data) { return this._authFetch(`${API_BASE_URL}/manufacturers/create`, { method: 'POST', body: JSON.stringify(data) }); }
+    async getManufacturers() { return this._extractItems(await this._authFetch(`${API_BASE_URL}/manufacturers/`)); }
+    async updateManufacturer(id, data) { return this._authFetch(`${API_BASE_URL}/manufacturers/${id}`, { method: 'PUT', body: JSON.stringify(data) }); }
+    async deleteManufacturer(id) { return this._authFetch(`${API_BASE_URL}/manufacturers/${id}`, { method: 'DELETE' }); }
+
+    // ========== CUSTOMERS ==========
+    async createCustomer(data) { return this._authFetch(`${API_BASE_URL}/customers/create`, { method: 'POST', body: JSON.stringify(data) }); }
+    async getCustomers(search = '') { const qs = search ? `?search=${encodeURIComponent(search)}` : ''; return this._extractItems(await this._authFetch(`${API_BASE_URL}/customers/${qs}`)); }
+    async getCustomer(id) { return this._extractData(await this._authFetch(`${API_BASE_URL}/customers/${id}`)); }
+    async updateCustomer(id, data) { return this._authFetch(`${API_BASE_URL}/customers/${id}`, { method: 'PUT', body: JSON.stringify(data) }); }
+    async deleteCustomer(id) { return this._authFetch(`${API_BASE_URL}/customers/${id}`, { method: 'DELETE' }); }
+
+    // ========== STOCK ADJUSTMENTS ==========
+    async createStockAdjustment(data) { return this._authFetch(`${API_BASE_URL}/stock-adjustments/create`, { method: 'POST', body: JSON.stringify(data) }); }
+    async getStockAdjustments(status = '') { const qs = status ? `?status=${status}` : ''; return this._extractItems(await this._authFetch(`${API_BASE_URL}/stock-adjustments/${qs}`)); }
+    async approveStockAdjustment(id) { return this._authFetch(`${API_BASE_URL}/stock-adjustments/${id}/approve`, { method: 'POST' }); }
+    async rejectStockAdjustment(id) { return this._authFetch(`${API_BASE_URL}/stock-adjustments/${id}/reject`, { method: 'POST' }); }
+
+    // ========== RETURNS ==========
+    async createReturn(data) { return this._authFetch(`${API_BASE_URL}/returns/create`, { method: 'POST', body: JSON.stringify(data) }); }
+    async getReturns() { return this._extractItems(await this._authFetch(`${API_BASE_URL}/returns/`)); }
+
+    // ========== STOCK TRANSFERS ==========
+    async createStockTransfer(data) { return this._authFetch(`${API_BASE_URL}/stock-transfers/create`, { method: 'POST', body: JSON.stringify(data) }); }
+    async getStockTransfers(status = '') { const qs = status ? `?status=${status}` : ''; return this._extractItems(await this._authFetch(`${API_BASE_URL}/stock-transfers/${qs}`)); }
+    async approveStockTransfer(id) { return this._authFetch(`${API_BASE_URL}/stock-transfers/${id}/approve`, { method: 'POST' }); }
+    async rejectStockTransfer(id) { return this._authFetch(`${API_BASE_URL}/stock-transfers/${id}/reject`, { method: 'POST' }); }
+
+    // ========== SUPPLIER (update/delete) ==========
+    async updateSupplier(id, data) { return this._authFetch(`${API_BASE_URL}/suppliers/${id}`, { method: 'PUT', body: JSON.stringify(data) }); }
+    async deleteSupplier(id) { return this._authFetch(`${API_BASE_URL}/suppliers/${id}`, { method: 'DELETE' }); }
+
+    // ========== PURCHASE (update/delete) ==========
+    async updatePurchase(id, data) { return this._authFetch(`${API_BASE_URL}/purchases/${id}`, { method: 'PUT', body: JSON.stringify(data) }); }
+    async deletePurchase(id) { return this._authFetch(`${API_BASE_URL}/purchases/${id}`, { method: 'DELETE' }); }
+
+    // ========== ADVANCED REPORTS ==========
+    async getSlowMoving(days = 30) { return this._extractData(await this._authFetch(`${API_BASE_URL}/reports/slow-moving?days=${days}`)); }
+    async getReorderSuggestions() { return this._extractData(await this._authFetch(`${API_BASE_URL}/reports/reorder-suggestions`)); }
+    async getOverstock() { return this._extractData(await this._authFetch(`${API_BASE_URL}/reports/overstock`)); }
+    async getSupplierPerformance(params = {}) { const qs = new URLSearchParams(params).toString(); return this._extractData(await this._authFetch(`${API_BASE_URL}/reports/supplier-performance?${qs}`)); }
 }
 
 const api = new PharmacyAPI();

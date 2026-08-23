@@ -13,8 +13,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- SweetAlert2 -->
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="js/sweetalert-helper.js?v=1"></script>
     
-    <link href="css/style.css" rel="stylesheet">
+    <link href="css/style.css?v=4" rel="stylesheet">
 </head>
 <body>
     <!-- Loading Overlay -->
@@ -58,17 +62,19 @@
                     </button>
                     <a class="navbar-brand" href="#"><i class="fas fa-hospital-user me-2 d-none d-sm-inline"></i>Pharma<span class="text-accent">Care</span></a>
                 </div>
-                <div class="d-flex align-items-center">
-                    <div class="notification-bell me-3 position-relative" onclick="toggleNotificationPanel()" role="button" title="Notifications">
+                <div class="d-flex align-items-center gap-2">
+                    <button class="lang-toggle" id="langToggle" onclick="toggleLanguage()" title="Toggle Language">EN</button>
+                    <button class="theme-toggle" id="themeToggle" onclick="ThemeManager.toggle()" title="Toggle Theme"><i class="fas fa-moon"></i></button>
+                    <div class="notification-bell me-2 position-relative" onclick="toggleNotificationPanel()" role="button" title="Notifications">
                         <i class="fas fa-bell text-light fs-5"></i>
                         <span class="notification-badge d-none" id="notifBadge">0</span>
                     </div>
-                    <span class="text-light me-3 d-none d-md-inline text-truncate" style="max-width:140px;">
+                    <span class="text-light me-2 d-none d-md-inline text-truncate" style="max-width:140px;">
                         <i class="fas fa-user-circle me-1"></i><span id="userName">Admin</span>
                     </span>
                     <span class="badge bg-info me-2 d-none d-sm-inline" id="userRole">Admin</span>
                     <button class="btn btn-outline-light btn-sm" onclick="handleLogout()">
-                        <i class="fas fa-sign-out-alt"></i><span class="d-none d-sm-inline ms-1">Logout</span>
+                        <i class="fas fa-sign-out-alt"></i><span class="d-none d-sm-inline ms-1" data-i18n="Logout">Logout</span>
                     </button>
                 </div>
             </div>
@@ -79,57 +85,82 @@
             <!-- Sidebar -->
             <div class="sidebar" id="sidebar">
                 <div class="menu-item active" data-page="dashboard" onclick="navigateTo('dashboard')">
-                    <i class="fas fa-chart-pie"></i> Dashboard
+                    <i class="fas fa-chart-pie"></i> <span data-i18n="Dashboard">Dashboard</span>
                 </div>
                 <div class="menu-item" data-page="medicines" onclick="navigateTo('medicines')">
-                    <i class="fas fa-capsules"></i> Medicines
+                    <i class="fas fa-capsules"></i> <span data-i18n="Medicines">Medicines</span>
                 </div>
                 <div class="menu-item" data-page="inventory" onclick="navigateTo('inventory')">
-                    <i class="fas fa-warehouse"></i> Inventory
+                    <i class="fas fa-warehouse"></i> <span data-i18n="Inventory">Inventory</span>
                 </div>
                 <div class="menu-item" data-page="sales" onclick="navigateTo('sales')">
-                    <i class="fas fa-shopping-cart"></i> Sales
+                    <i class="fas fa-shopping-cart"></i> <span data-i18n="Sales">Sales</span>
                 </div>
                 <div class="menu-item" data-page="purchases" onclick="navigateTo('purchases')">
-                    <i class="fas fa-truck"></i> Purchases
+                    <i class="fas fa-truck"></i> <span data-i18n="Purchases">Purchases</span>
                 </div>
                 <div class="menu-item" data-page="suppliers" onclick="navigateTo('suppliers')">
-                    <i class="fas fa-handshake"></i> Suppliers
+                    <i class="fas fa-handshake"></i> <span data-i18n="Suppliers">Suppliers</span>
                 </div>
                 <div class="menu-item" data-page="reports" onclick="navigateTo('reports')">
-                    <i class="fas fa-chart-bar"></i> Reports
+                    <i class="fas fa-chart-bar"></i> <span data-i18n="Reports">Reports</span>
                 </div>
                 <div class="menu-item" data-page="profitloss" onclick="navigateTo('profitloss')">
-                    <i class="fas fa-balance-scale"></i> Profit &amp; Loss
+                    <i class="fas fa-balance-scale"></i> <span data-i18n="Profit & Loss">Profit &amp; Loss</span>
                 </div>
                 <div class="menu-item" data-page="expenses" onclick="navigateTo('expenses')">
-                    <i class="fas fa-receipt"></i> Expenses
+                    <i class="fas fa-receipt"></i> <span data-i18n="Expenses">Expenses</span>
                 </div>
                 <div class="menu-item" data-page="expiry" onclick="navigateTo('expiry')">
-                    <i class="fas fa-hourglass-end"></i> Expiry Monitor
+                    <i class="fas fa-hourglass-end"></i> <span data-i18n="Expiry Monitor">Expiry Monitor</span>
                 </div>
                 <div class="menu-item" data-page="prescriptions" onclick="navigateTo('prescriptions')">
-                    <i class="fas fa-file-medical"></i> Prescriptions
+                    <i class="fas fa-file-medical"></i> <span data-i18n="Prescriptions">Prescriptions</span>
+                </div>
+                <div class="menu-item" data-page="returns" onclick="navigateTo('returns')">
+                    <i class="fas fa-undo"></i> <span data-i18n="Returns">Returns</span>
+                </div>
+                <div class="menu-item" data-page="stock_adjustments" onclick="navigateTo('stock_adjustments')">
+                    <i class="fas fa-sliders-h"></i> <span data-i18n="Stock Adjustments">Stock Adjustments</span>
+                </div>
+                <div class="menu-item" data-page="stock_transfers" onclick="navigateTo('stock_transfers')">
+                    <i class="fas fa-exchange-alt"></i> <span data-i18n="Stock Transfers">Stock Transfers</span>
+                </div>
+                <hr>
+                <div class="menu-item" data-page="customers" onclick="navigateTo('customers')">
+                    <i class="fas fa-user-friends"></i> <span data-i18n="Customers">Customers</span>
+                </div>
+                <div class="menu-item" data-page="branches" onclick="navigateTo('branches')">
+                    <i class="fas fa-store"></i> <span data-i18n="Branches">Branches</span>
+                </div>
+                <div class="menu-item" data-page="categories" onclick="navigateTo('categories')">
+                    <i class="fas fa-tags"></i> <span data-i18n="Categories">Categories</span>
+                </div>
+                <div class="menu-item" data-page="manufacturers" onclick="navigateTo('manufacturers')">
+                    <i class="fas fa-industry"></i> <span data-i18n="Manufacturers">Manufacturers</span>
+                </div>
+                <div class="menu-item" data-page="disposals" onclick="navigateTo('disposals')">
+                    <i class="fas fa-biohazard"></i> <span data-i18n="Disposals">Disposals</span>
                 </div>
                 <hr>
                 <div class="menu-item" data-page="users" onclick="navigateTo('users')">
-                    <i class="fas fa-users-cog"></i> Users &amp; Roles
+                    <i class="fas fa-users-cog"></i> <span data-i18n="Users & Roles">Users &amp; Roles</span>
                 </div>
                 <div class="menu-item" data-page="permissions" onclick="navigateTo('permissions')">
-                    <i class="fas fa-shield-alt"></i> Permissions
+                    <i class="fas fa-shield-alt"></i> <span data-i18n="Permissions">Permissions</span>
                 </div>
                 <div class="menu-item" data-page="activities" onclick="navigateTo('activities')">
-                    <i class="fas fa-history"></i> Activities
+                    <i class="fas fa-history"></i> <span data-i18n="Activities">Activities</span>
                 </div>
                 <div class="menu-item" data-page="settings" onclick="navigateTo('settings')">
-                    <i class="fas fa-cog"></i> Settings
+                    <i class="fas fa-cog"></i> <span data-i18n="Settings">Settings</span>
                 </div>
                 <div class="menu-item" data-page="backup" onclick="navigateTo('backup')">
-                    <i class="fas fa-database"></i> Backup &amp; Restore
+                    <i class="fas fa-database"></i> <span data-i18n="Backup & Restore">Backup &amp; Restore</span>
                 </div>
                 <hr>
                 <div class="menu-item text-danger" onclick="handleLogout()">
-                    <i class="fas fa-sign-out-alt"></i> Logout
+                    <i class="fas fa-sign-out-alt"></i> <span data-i18n="Logout">Logout</span>
                 </div>
             </div>
 
@@ -235,6 +266,16 @@
                             <label class="form-label">Strength</label>
                             <input type="text" id="med_strength" class="form-control" placeholder="e.g., 500mg">
                         </div>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label class="form-label">Default Purchase Price (TSh)</label>
+                                <input type="number" id="med_purchase_price" class="form-control" min="0" step="1" placeholder="e.g., 2000">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Default Selling Price (TSh)</label>
+                                <input type="number" id="med_selling_price" class="form-control" min="0" step="1" placeholder="e.g., 3500">
+                            </div>
+                        </div>
                         <div class="mb-3">
                             <label class="form-label">Barcode</label>
                             <input type="text" id="med_barcode" class="form-control">
@@ -298,15 +339,16 @@
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title"><i class="fas fa-shopping-cart me-2"></i>New Sale</h5>
+                    <h5 class="modal-title"><i class="fas fa-shopping-cart me-2"></i>Create New Sale</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
+                    <div id="sale_error"></div>
                     <form id="createSaleForm">
                         <div class="row mb-3">
                             <div class="col-md-6">
                                 <label class="form-label">Customer Name</label>
-                                <input type="text" id="sale_customer" class="form-control" value="Walk-in Customer">
+                                <input type="text" id="sale_customer" class="form-control" placeholder="Customer name (optional)">
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label">Sale Date</label>
@@ -315,33 +357,63 @@
                         </div>
                         <div class="row mb-3">
                             <div class="col-md-8">
-                                <label class="form-label">Search Medicine</label>
-                                <input type="text" id="sale_search" class="form-control" placeholder="Type medicine name..." oninput="searchMedicinesForSale(this.value)">
+                                <label class="form-label required">Search Medicine</label>
+                                <input type="text" id="sale_search" class="form-control" placeholder="Type medicine name to search..." oninput="searchMedicinesForSale(this.value)">
                             </div>
                             <div class="col-md-4">
-                                <label class="form-label">Quantity</label>
+                                <label class="form-label required">Quantity</label>
                                 <input type="number" id="sale_quantity" class="form-control" value="1" min="1">
                             </div>
                         </div>
                         <div id="saleSearchResults" class="mb-3"></div>
                         <div class="mb-3">
-                            <label class="form-label">Sale Items</label>
+                            <label class="form-label fw-bold">Sale Items</label>
                             <div id="saleCart" class="table-container">
-                                <p class="text-muted text-center">No items added yet</p>
+                                <p class="text-muted text-center">No items added yet. Search and add medicines above.</p>
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row g-3 mb-3">
                             <div class="col-md-4">
                                 <label class="form-label">Subtotal</label>
                                 <input type="text" id="sale_subtotal" class="form-control" value="0" readonly>
                             </div>
                             <div class="col-md-4">
                                 <label class="form-label">Discount</label>
-                                <input type="number" id="sale_discount" class="form-control" value="0" oninput="updateSaleTotal()">
+                                <input type="number" id="sale_discount" class="form-control" value="0" min="0" oninput="updateSaleTotals()">
                             </div>
                             <div class="col-md-4">
-                                <label class="form-label">Total</label>
-                                <input type="text" id="sale_total" class="form-control" value="0" readonly>
+                                <label class="form-label fw-bold">TOTAL</label>
+                                <input type="text" id="sale_total" class="form-control fw-bold" value="0" readonly>
+                            </div>
+                        </div>
+                        <div class="row g-3 mb-3">
+                            <div class="col-md-4">
+                                <label class="form-label">Payment Method</label>
+                                <select id="sale_payment_method" class="form-control">
+                                    <option value="cash">Cash</option>
+                                    <option value="mobile_money">Mobile Money</option>
+                                    <option value="bank_transfer">Bank Transfer</option>
+                                    <option value="card">Card</option>
+                                    <option value="credit">Credit</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label">Amount Paid</label>
+                                <input type="number" id="sale_amount_paid" class="form-control" value="0" min="0" oninput="updateSaleTotals()">
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label">Change</label>
+                                <input type="text" id="sale_change" class="form-control" value="0" readonly>
+                            </div>
+                        </div>
+                        <div class="row g-3 mb-3">
+                            <div class="col-md-6">
+                                <label class="form-label">Amount Due</label>
+                                <input type="text" id="sale_amount_due" class="form-control text-danger fw-bold" value="0" readonly>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Notes</label>
+                                <input type="text" id="sale_notes" class="form-control" placeholder="Optional notes...">
                             </div>
                         </div>
                     </form>
@@ -398,11 +470,15 @@
                     <form id="createPurchaseForm">
                         <div class="row mb-3">
                             <div class="col-md-6">
-                                <label class="form-label">Supplier Name</label>
-                                <input type="text" id="purchase_supplier" class="form-control" required>
+                                <label class="form-label required">Supplier Name</label>
+                                <div class="position-relative">
+                                    <input type="text" id="purchase_supplier" class="form-control" placeholder="Type supplier name..." autocomplete="off" oninput="searchSuppliersForPurchase(this.value)">
+                                    <div id="supplierSearchResults" class="position-absolute w-100" style="z-index:10;display:none;"></div>
+                                </div>
+                                <input type="hidden" id="purchase_supplier_id">
                             </div>
                             <div class="col-md-6">
-                                <label class="form-label">Purchase Date</label>
+                                <label class="form-label required">Purchase Date</label>
                                 <input type="date" id="purchase_date" class="form-control">
                             </div>
                         </div>
@@ -420,31 +496,42 @@
                             </div>
                             <div class="col-md-8 d-flex align-items-end">
                                 <small class="text-muted" id="purchaseCurrencyHint">
-                                    <i class="fas fa-exchange-alt me-1"></i>Bei zitabadilishwa kuwa TZS (1 USD ≈ TSh 2,650)
+                                    <i class="fas fa-exchange-alt me-1"></i>Prices in TZS directly
                                 </small>
                             </div>
                         </div>
                         <div class="mb-3">
-                            <label class="form-label">Purchase Items</label>
+                            <label class="form-label fw-bold">Purchase Items</label>
                             <div id="purchaseItems">
                                 <div class="purchase-item-row row mb-2">
-                                    <div class="col-md-2">
-                                        <input type="number" class="form-control" placeholder="Med ID" name="purchase_medicine_id">
+                                    <div class="col-md-3" style="position:relative;">
+                                        <label class="form-label small required">Medicine Name</label>
+                                        <input type="text" class="form-control purchase-medicine-search" placeholder="Search medicine..." autocomplete="off" oninput="searchMedicineForPurchase(this)">
+                                        <div class="purchase-med-results" style="display:none;position:absolute;top:100%;left:0;right:0;z-index:9999;background:var(--bg-card,#fff);border:1px solid var(--border-color,#ddd);border-radius:6px;max-height:220px;overflow-y:auto;box-shadow:0 6px 20px rgba(0,0,0,0.2);"></div>
+                                        <input type="hidden" class="purchase-medicine-id" name="purchase_medicine_id">
+                                        <small class="text-muted purchase-medicine-name"></small>
                                     </div>
                                     <div class="col-md-2">
+                                        <label class="form-label small required">Batch No</label>
                                         <input type="text" class="form-control" placeholder="Batch No" name="purchase_batch">
                                     </div>
                                     <div class="col-md-2">
+                                        <label class="form-label small required">Expiry Date</label>
                                         <input type="date" class="form-control" name="purchase_expiry">
                                     </div>
-                                    <div class="col-md-2">
-                                        <input type="number" class="form-control" placeholder="Qty" name="purchase_qty">
+                                    <div class="col-md-1">
+                                        <label class="form-label small required">Qty</label>
+                                        <input type="number" class="form-control" placeholder="Qty" name="purchase_qty" min="1" value="1">
                                     </div>
                                     <div class="col-md-2">
-                                        <input type="number" step="0.01" min="0" class="form-control" placeholder="Buy Price" name="purchase_buy_price">
+                                        <label class="form-label small required">Buy Price</label>
+                                        <input type="text" class="form-control" placeholder="TSh" name="purchase_buy_price" oninput="this.value=this.value.replace(/[^0-9]/g,'')">
+                                        <small class="text-muted">e.g. 200000</small>
                                     </div>
                                     <div class="col-md-2">
-                                        <input type="number" step="0.01" min="0" class="form-control" placeholder="Sell Price" name="purchase_sell_price">
+                                        <label class="form-label small required">Sell Price</label>
+                                        <input type="text" class="form-control" placeholder="TSh" name="purchase_sell_price" oninput="this.value=this.value.replace(/[^0-9]/g,'')">
+                                        <small class="text-muted">e.g. 350000</small>
                                     </div>
                                     <div class="col-md-12 mt-1">
                                         <button type="button" class="btn btn-danger btn-sm" onclick="removePurchaseItem(this)">
@@ -570,26 +657,36 @@
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="js/config.js"></script>
-    <script src="js/api.js"></script>
-    <script src="js/auth.js"></script>
-    <script src="js/dashboard.js"></script>
-    <script src="js/medicines.js"></script>
-    <script src="js/inventory.js"></script>
-    <script src="js/sales.js"></script>
-    <script src="js/purchases.js"></script>
-    <script src="js/suppliers.js"></script>
-    <script src="js/reports.js"></script>
-    <script src="js/prescriptions.js"></script>
-    <script src="js/users.js"></script>
-    <script src="js/permissions.js"></script>
-    <script src="js/activities.js"></script>
-    <script src="js/settings.js"></script>
-    <script src="js/expenses.js"></script>
-    <script src="js/profitloss.js"></script>
-    <script src="js/expiry.js"></script>
+    <script src="js/config.js?v=3"></script>
+    <script src="js/lang.js?v=1"></script>
+    <script src="js/theme.js?v=1"></script>
+    <script src="js/api.js?v=3"></script>
+    <script src="js/auth.js?v=3"></script>
+    <script src="js/dashboard.js?v=4"></script>
+    <script src="js/medicines.js?v=3"></script>
+    <script src="js/inventory.js?v=3"></script>
+    <script src="js/sales.js?v=3"></script>
+    <script src="js/purchases.js?v=3"></script>
+    <script src="js/suppliers.js?v=3"></script>
+    <script src="js/reports.js?v=3"></script>
+    <script src="js/prescriptions.js?v=3"></script>
+    <script src="js/users.js?v=3"></script>
+    <script src="js/permissions.js?v=3"></script>
+    <script src="js/activities.js?v=3"></script>
+    <script src="js/settings.js?v=3"></script>
+    <script src="js/expenses.js?v=3"></script>
+    <script src="js/profitloss.js?v=3"></script>
+    <script src="js/expiry.js?v=3"></script>
     <script src="js/notifications.js"></script>
     <script src="js/backup.js"></script>
+    <script src="js/branches.js?v=1"></script>
+    <script src="js/categories.js?v=1"></script>
+    <script src="js/manufacturers.js?v=1"></script>
+    <script src="js/customers.js?v=1"></script>
+    <script src="js/stock_adjustments.js?v=1"></script>
+    <script src="js/returns.js?v=1"></script>
+    <script src="js/stock_transfers.js?v=1"></script>
+    <script src="js/disposals.js?v=1"></script>
     <script src="js/app.js"></script>
 
     <!-- Add Expense Modal -->

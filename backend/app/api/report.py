@@ -81,6 +81,65 @@ def expiry_report(
     return {"success": True, "message": "Expiry report", "data": ReportService.expiry_report(db, wd, 7)}
 
 
+@router.get("/top-selling")
+def top_selling(
+    period: str = "month",
+    date_from: date = None,
+    date_to: date = None,
+    limit: int = 10,
+    db: Session = Depends(get_db),
+    current_user = Depends(get_current_user)
+):
+    return {"success": True, "message": "Top selling medicines", "data": ReportService.top_selling_medicines(db, period, date_from, date_to, limit)}
+
+
+@router.get("/expense-trending")
+def expense_trending(
+    period: str = "month",
+    date_from: date = None,
+    date_to: date = None,
+    db: Session = Depends(get_db),
+    current_user = Depends(get_current_user)
+):
+    return {"success": True, "message": "Expense trending", "data": ReportService.expense_trending(db, period, date_from, date_to)}
+
+
+@router.get("/slow-moving")
+def slow_moving(
+    days: int = 30,
+    db: Session = Depends(get_db),
+    current_user = Depends(get_current_user)
+):
+    return {"success": True, "message": "Slow-moving medicines", "data": ReportService.slow_moving_medicines(db, days)}
+
+
+@router.get("/reorder-suggestions")
+def reorder_suggestions(
+    db: Session = Depends(get_db),
+    current_user = Depends(get_current_user)
+):
+    return {"success": True, "message": "Reorder suggestions", "data": ReportService.reorder_suggestions(db)}
+
+
+@router.get("/overstock")
+def overstock(
+    db: Session = Depends(get_db),
+    current_user = Depends(get_current_user)
+):
+    return {"success": True, "message": "Overstock report", "data": ReportService.overstock_report(db)}
+
+
+@router.get("/supplier-performance")
+def supplier_performance(
+    period: str = "month",
+    date_from: date = None,
+    date_to: date = None,
+    db: Session = Depends(get_db),
+    current_user = Depends(get_current_user)
+):
+    return {"success": True, "message": "Supplier performance", "data": ReportService.supplier_performance(db, period, date_from, date_to)}
+
+
 @router.get("/export/{report_type}")
 def export_report(
     report_type: str,

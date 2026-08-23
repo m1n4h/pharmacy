@@ -8,7 +8,7 @@ async function navigateTo(page) {
     // Permission gate
     const allowed = window.userModules || [];
     if (!window.isAdmin && allowed.length > 0 && !allowed.includes(page)) {
-        alert('Huna ruhusa ya kufikia ukurasa huu.');
+        SwalAlert.warning('Huna ruhusa ya kufikia ukurasa huu.');
         return;
     }
     
@@ -33,7 +33,15 @@ async function navigateTo(page) {
         users: { title: 'Users & Roles', subtitle: 'Manage users and their roles' },
         permissions: { title: 'Permissions', subtitle: 'Manage module access per role' },
         activities: { title: 'Activities', subtitle: 'View all system activities' },
-        settings: { title: 'Settings', subtitle: 'Configure system settings' }
+        settings: { title: 'Settings', subtitle: 'Configure system settings' },
+        branches: { title: 'Branches', subtitle: 'Manage pharmacy branches' },
+        categories: { title: 'Categories', subtitle: 'Manage medicine categories' },
+        manufacturers: { title: 'Manufacturers', subtitle: 'Manage medicine manufacturers' },
+        customers: { title: 'Customers', subtitle: 'Manage customer records' },
+        stock_adjustments: { title: 'Stock Adjustments', subtitle: 'Track and reconcile inventory differences' },
+        returns: { title: 'Returns', subtitle: 'Process sales returns and refunds' },
+        stock_transfers: { title: 'Stock Transfers', subtitle: 'Transfer stock between branches' },
+        disposals: { title: 'Disposal Register', subtitle: 'TMDA-compliant disposal tracking' }
     };
     
     const info = titles[page] || titles.dashboard;
@@ -66,8 +74,17 @@ async function navigateTo(page) {
             case 'permissions': await renderPermissions(); break;
             case 'activities': await renderActivities(); break;
             case 'settings': await renderSettings(); break;
+            case 'branches': await renderBranches(); break;
+            case 'categories': await renderCategories(); break;
+            case 'manufacturers': await renderManufacturers(); break;
+            case 'customers': await renderCustomers(); break;
+            case 'stock_adjustments': await renderStockAdjustments(); break;
+            case 'returns': await renderReturns(); break;
+            case 'stock_transfers': await renderStockTransfers(); break;
+            case 'disposals': await renderDisposals(); break;
             default: await renderDashboard();
         }
+        if (typeof applyTranslations === 'function') applyTranslations();
     } catch (e) {
         content.innerHTML = `<div class="alert alert-danger">${e.message}</div>`;
     }
@@ -125,11 +142,16 @@ function applyMenuPermissions(modules, isAdmin) {
 // Initialize
 document.addEventListener('DOMContentLoaded', async function() {
     console.log('🚀 App starting...');
+    if (window.ThemeManager) ThemeManager.init();
+    const savedLang = localStorage.getItem('pharmacy_lang') || 'en';
+    window.I18N.lang = savedLang;
     const authenticated = await checkAuth();
     if (!authenticated) {
         document.getElementById('loadingSpinner').classList.add('hidden');
         document.getElementById('loginPage').style.display = 'flex';
         document.getElementById('mainApp').classList.add('d-none');
+    } else {
+        window.applyTranslations();
     }
 });
 

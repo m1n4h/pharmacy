@@ -89,3 +89,33 @@ class PurchaseService:
         except Exception:
             db.rollback()
             raise
+
+    @staticmethod
+    def update_purchase(db: Session, purchase_id: int, data):
+        purchase = db.query(Purchase).filter(Purchase.id == purchase_id).first()
+        if not purchase:
+            return None
+        for field, value in data.dict(exclude_unset=True).items():
+            setattr(purchase, field, value)
+        db.commit()
+        db.refresh(purchase)
+        return purchase
+
+    @staticmethod
+    def delete_purchase(db: Session, purchase_id: int):
+        purchase = db.query(Purchase).filter(Purchase.id == purchase_id).first()
+        if not purchase:
+            return None
+        # Restore stock for each purchase item
+        for item in purchase.items:
+            batch = db.query(Batch).filter(
+                Batch.batch_no == item.batch_no,
+                Batch.medicine_id == item.medicine_id
+            ).first()
+            if batch:
+                batch.quantity -= item.quantity
+                if batch.quantity <= 0:
+                    db.delete(batch)
+        db.delete(purchase)
+        db.commit()
+        return purchase

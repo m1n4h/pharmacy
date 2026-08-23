@@ -1,7 +1,8 @@
 from pydantic import BaseModel
-from typing import List
+from typing import Dict, List, Optional
 
 
 class RolePermissionUpdate(BaseModel):
     role: str
-    modules: List[str]
+    modules: Optional[List[str]] = None  # Legacy: list of module names
+    permissions: Optional[Dict[str, str]] = None  # New: {module: permission_type}

@@ -66,7 +66,9 @@ def create_medicine(
             "unit": med.unit,
             "strength": med.strength,
             "barcode": med.barcode,
-            "image_url": med.image_url
+            "image_url": med.image_url,
+            "default_purchase_price": med.default_purchase_price,
+            "default_selling_price": med.default_selling_price
         }
     }
 
@@ -101,7 +103,9 @@ def bulk_create_medicines(
                 "unit": med.unit,
                 "strength": med.strength,
                 "barcode": med.barcode,
-                "image_url": med.image_url
+                "image_url": med.image_url,
+                "default_purchase_price": med.default_purchase_price,
+                "default_selling_price": med.default_selling_price
             })
     
     return {
@@ -148,7 +152,9 @@ def get_medicine_detail(
             "unit": medicine.unit,
             "strength": medicine.strength,
             "barcode": medicine.barcode,
-            "image_url": medicine.image_url
+            "image_url": medicine.image_url,
+            "default_purchase_price": medicine.default_purchase_price,
+            "default_selling_price": medicine.default_selling_price
         }
     }
 
@@ -204,7 +210,9 @@ def list_medicines(
                     "strength": item[0].strength,
                     "barcode": item[0].barcode,
                     "image_url": item[0].image_url,
-                    "price": item[1] if len(item) > 1 and item[1] else None,
+                    "default_purchase_price": item[0].default_purchase_price,
+                    "default_selling_price": item[0].default_selling_price,
+                    "price": item[1] if len(item) > 1 and item[1] else item[0].default_selling_price,
                     "expiry_date": item[2].isoformat() if len(item) > 2 and item[2] else None
                 }
                 for item in paginated["items"]
@@ -251,7 +259,9 @@ def update_medicine(
             "unit": med.unit,
             "strength": med.strength,
             "barcode": med.barcode,
-            "image_url": med.image_url
+            "image_url": med.image_url,
+            "default_purchase_price": med.default_purchase_price,
+            "default_selling_price": med.default_selling_price
         }
     }
 

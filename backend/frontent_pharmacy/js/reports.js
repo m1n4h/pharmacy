@@ -9,7 +9,7 @@ async function renderReports() {
     content.innerHTML = `
         <div class="d-flex flex-wrap gap-3 align-items-end mb-4">
             <div>
-                <label class="form-label mb-1">Report Type</label>
+                <label class="form-label mb-1 fw-bold">Report Type</label>
                 <select id="reportType" class="form-control" onchange="onReportTypeChange()" style="min-width:200px;">
                     <option value="sales">Sales Report</option>
                     <option value="purchases">Purchases Report</option>
@@ -18,7 +18,7 @@ async function renderReports() {
                 </select>
             </div>
             <div id="periodWrap">
-                <label class="form-label mb-1">Period</label>
+                <label class="form-label mb-1 fw-bold">Period</label>
                 <select id="reportPeriod" class="form-control" style="min-width:160px;">
                     <option value="today">Today</option>
                     <option value="week">This Week</option>
@@ -29,7 +29,7 @@ async function renderReports() {
             </div>
             <button class="btn btn-primary" onclick="generateReport()"><i class="fas fa-search me-1"></i>Generate</button>
             <button class="btn btn-outline-success" onclick="exportCurrentReport()"><i class="fas fa-file-csv me-1"></i>Export CSV</button>
-            <button class="btn btn-outline-secondary" onclick="window.print()"><i class="fas fa-print me-1"></i>Print</button>
+            <button class="btn btn-outline-secondary" onclick="printReportClean()"><i class="fas fa-print me-1"></i>Print</button>
         </div>
         <div id="reportResults"></div>
     `;
@@ -83,7 +83,7 @@ async function generateReport() {
         `).join('') : '<tr><td colspan="10" class="text-center text-muted">No data.</td></tr>';
 
         container.innerHTML = `
-            <div class="card"><div class="card-header"><i class="fas fa-chart-bar me-2"></i>${title}</div>
+            <div class="card" id="reportOutput"><div class="card-header"><i class="fas fa-chart-bar me-2"></i>${title}</div>
             <div class="card-body">
                 <div class="table-container">
                     <table class="table table-hover">
@@ -98,6 +98,62 @@ async function generateReport() {
     }
 }
 
+function printReportClean() {
+    const output = document.getElementById('reportOutput');
+    if (!output) {
+        SwalAlert.warning('Generate a report first!');
+        return;
+    }
+
+    const reportType = document.getElementById('reportType')?.value || 'Report';
+    const period = document.getElementById('reportPeriod')?.value || '';
+    const title = output.querySelector('.card-header')?.textContent || reportType;
+    
+    const statsHtml = output.querySelectorAll('.stat-card').length > 0
+        ? Array.from(output.querySelectorAll('.stat-card')).map(sc => {
+            const val = sc.querySelector('.stat-value')?.textContent || '';
+            const label = sc.querySelector('.stat-label')?.textContent || '';
+            return `<div style="flex:1;min-width:140px;"><strong>${label}:</strong> ${val}</div>`;
+        }).join('')
+        : '';
+
+    const table = output.querySelector('table');
+    const tableHtml = table ? table.outerHTML : '';
+
+    const printWindow = window.open('', '_blank');
+    printWindow.document.write(`
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <title>${title}</title>
+            <style>
+                body { font-family: Arial, sans-serif; padding: 30px; color: #333; }
+                h1 { text-align: center; font-size: 22px; margin-bottom: 4px; color: #1e3a5f; }
+                .subtitle { text-align: center; color: #666; margin-bottom: 4px; }
+                .date { text-align: center; color: #999; font-size: 12px; margin-bottom: 20px; }
+                .stats { display: flex; flex-wrap: wrap; gap: 15px; margin: 15px 0; }
+                table { width: 100%; border-collapse: collapse; margin-top: 15px; font-size: 13px; }
+                th, td { border: 1px solid #ddd; padding: 8px 10px; text-align: left; }
+                th { background: #f5f5f5; font-weight: 600; text-transform: uppercase; font-size: 11px; }
+                .footer { text-align: center; color: #999; font-size: 11px; margin-top: 30px; border-top: 1px solid #eee; padding-top: 10px; }
+                @media print { body { padding: 15px; } }
+            </style>
+        </head>
+        <body>
+            <h1>PharmaCare - Pharmacy Management System</h1>
+            <p class="subtitle">${title}</p>
+            <p class="subtitle">${period ? 'Period: ' + period : ''}</p>
+            <p class="date">Generated: ${new Date().toLocaleString()}</p>
+            ${statsHtml ? '<div class="stats">' + statsHtml + '</div>' : ''}
+            ${tableHtml}
+            <div class="footer">PharmaCare Pharmacy Management System — Confidential</div>
+            <script>window.onload=function(){window.print();}<\/script>
+        </body>
+        </html>
+    `);
+    printWindow.document.close();
+}
+
 async function exportCurrentReport() {
     const type = document.getElementById('reportType').value;
     const period = document.getElementById('reportPeriod')?.value || 'month';
@@ -110,7 +166,7 @@ async function exportCurrentReport() {
         a.click();
         URL.revokeObjectURL(url);
     } catch (e) {
-        alert('Export failed: ' + e.message);
+        SwalAlert.error(e.message);
     }
 }
 

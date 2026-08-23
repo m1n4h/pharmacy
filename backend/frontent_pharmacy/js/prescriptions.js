@@ -113,22 +113,23 @@ async function editPrescription(id) {
         if (btn) btn.innerHTML = '<i class="fas fa-check"></i> Update Prescription';
         new bootstrap.Modal(document.getElementById('createPrescriptionModal')).show();
     } catch (error) {
-        alert('Failed to load prescription: ' + error.message);
+        SwalAlert.error(error.message);
     }
 }
 
 async function deletePrescription(id) {
-    if (!confirm('Delete this prescription? This cannot be undone.')) return;
+    const result = await SwalAlert.confirm('Delete this prescription? This cannot be undone.');
+    if (!result.isConfirmed) return;
     try {
         const res = await api.deletePrescription(id);
         if (res && res.success === false) {
-            alert('Failed: ' + (res.message || 'Unknown error'));
+            SwalAlert.error(res.message || 'Unknown error');
             return;
         }
-        alert('Prescription deleted.');
+        SwalAlert.success('Prescription deleted.');
         renderPrescriptions();
     } catch (error) {
-        alert('Failed: ' + error.message);
+        SwalAlert.error(error.message);
     }
 }
 
@@ -164,7 +165,7 @@ async function addRxToCart(medicineId, medicineName) {
     try {
         const stock = await api.getMedicineStock(medicineId);
         if (stock.total_stock < quantity) {
-            alert(`Not enough stock! Available: ${stock.total_stock}`);
+            SwalAlert.error(`Not enough stock! Available: ${stock.total_stock}`);
             return;
         }
         const existing = rxCart.find(item => item.medicine_id === medicineId);
@@ -181,7 +182,7 @@ async function addRxToCart(medicineId, medicineName) {
         document.getElementById('rx_search').value = '';
         updateRxCart();
     } catch (error) {
-        alert('Failed to add item: ' + error.message);
+        SwalAlert.error(error.message);
     }
 }
 
@@ -224,7 +225,7 @@ function updateRxCart() {
 
 async function createPrescription() {
     if (rxCart.length === 0) {
-        alert('Please add at least one medicine!');
+        SwalAlert.warning('Please add at least one medicine!');
         return;
     }
     const data = {
@@ -245,15 +246,15 @@ async function createPrescription() {
             result = await api.createPrescription(data);
         }
         if (result && result.success === false) {
-            alert('Failed: ' + (result.message || 'Unknown error'));
+            SwalAlert.error(result.message || 'Unknown error');
             return;
         }
         bootstrap.Modal.getInstance(document.getElementById('createPrescriptionModal')).hide();
-        alert(editingRxId ? 'Prescription updated successfully!' : 'Prescription created successfully!');
+        SwalAlert.success(editingRxId ? 'Prescription updated successfully!' : 'Prescription created successfully!');
         editingRxId = null;
         navigateTo('prescriptions');
     } catch (error) {
-        alert('Failed: ' + error.message);
+        SwalAlert.error(error.message);
     }
 }
 
@@ -261,39 +262,41 @@ async function viewPrescription(id) {
     try {
         const rx = await api.getPrescription(id);
         const itemLines = (rx?.items || []).map(i => `  • ${i.medicine_name} x${i.quantity} @ ${formatMoney(i.price)}`).join('\n');
-        alert(`RX ${rx.prescription_no}\nPatient: ${rx.patient_name}${rx.patient_age ? ` (${rx.patient_age})` : ''}\nDoctor: ${rx.doctor_name || '-'}\nStatus: ${rx.status}\n\nItems:\n${itemLines}\n\nTotal: ${formatMoney(rx.total_amount)}`);
+        SwalAlert.success(`RX ${rx.prescription_no}\nPatient: ${rx.patient_name}${rx.patient_age ? ` (${rx.patient_age})` : ''}\nDoctor: ${rx.doctor_name || '-'}\nStatus: ${rx.status}\n\nItems:\n${itemLines}\n\nTotal: ${formatMoney(rx.total_amount)}`);
     } catch (error) {
-        alert('Failed to load prescription: ' + error.message);
+        SwalAlert.error(error.message);
     }
 }
 
 async function dispensePrescription(id) {
-    if (!confirm('Dispense this prescription? Stock itapunguzwa.')) return;
+    const result = await SwalAlert.confirm('Dispense this prescription? Stock itapunguzwa.');
+    if (!result.isConfirmed) return;
     try {
         const result = await api.dispensePrescription(id);
         if (result && result.success === false) {
-            alert('Failed to dispense: ' + (result.message || 'Unknown error'));
+            SwalAlert.error(result.message || 'Unknown error');
             return;
         }
-        alert('Prescription dispensed successfully!');
+        SwalAlert.success('Prescription dispensed successfully!');
         renderPrescriptions();
     } catch (error) {
-        alert('Failed to dispense: ' + error.message);
+        SwalAlert.error(error.message);
     }
 }
 
 async function cancelPrescription(id) {
-    if (!confirm('Cancel this prescription?')) return;
+    const result = await SwalAlert.confirm('Cancel this prescription?');
+    if (!result.isConfirmed) return;
     try {
         const result = await api.cancelPrescription(id);
         if (result && result.success === false) {
-            alert('Failed to cancel: ' + (result.message || 'Unknown error'));
+            SwalAlert.error(result.message || 'Unknown error');
             return;
         }
-        alert('Prescription cancelled.');
+        SwalAlert.success('Prescription cancelled.');
         renderPrescriptions();
     } catch (error) {
-        alert('Failed to cancel: ' + error.message);
+        SwalAlert.error(error.message);
     }
 }
 

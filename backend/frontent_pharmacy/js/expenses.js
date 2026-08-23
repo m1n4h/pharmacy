@@ -72,7 +72,7 @@ async function editExpense(id) {
     try {
         const res = await api.listExpenses({});
         const e = (res.data.items || []).find(x => x.id === id);
-        if (!e) { alert('Expense not found'); return; }
+        if (!e) { SwalAlert.error('Expense not found'); return; }
         editingExpenseId = id;
         document.getElementById('exp_category').value = e.category;
         document.getElementById('exp_description').value = e.description || '';
@@ -85,7 +85,7 @@ async function editExpense(id) {
         if (btn) btn.innerHTML = '<i class="fas fa-save"></i> Update Expense';
         new bootstrap.Modal(document.getElementById('addExpenseModal')).show();
     } catch (error) {
-        alert('Failed: ' + error.message);
+        SwalAlert.error(error.message);
     }
 }
 
@@ -100,7 +100,7 @@ async function saveExpense() {
         notes: document.getElementById('exp_notes').value || null
     };
     if (!data.amount || data.amount <= 0 || !data.date) {
-        alert('Jaza kiasi na tarehe sahihi!');
+        SwalAlert.warning('Jaza kiasi na tarehe sahihi!');
         return;
     }
     try {
@@ -113,17 +113,18 @@ async function saveExpense() {
         editingExpenseId = null;
         renderExpenses();
     } catch (error) {
-        alert('Failed: ' + error.message);
+        SwalAlert.error(error.message);
     }
 }
 
 async function deleteExpense(id) {
-    if (!confirm('Futa gharama hii?')) return;
+    const result = await SwalAlert.confirm('Futa gharama hii?');
+    if (!result.isConfirmed) return;
     try {
         await api.deleteExpense(id);
         renderExpenses();
     } catch (error) {
-        alert('Failed: ' + error.message);
+        SwalAlert.error(error.message);
     }
 }
 

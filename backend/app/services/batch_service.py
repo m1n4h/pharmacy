@@ -1,11 +1,14 @@
 from sqlalchemy.orm import Session
 from app.models.batch import Batch
+from app.utils.helpers import to_dict
+
 
 class BatchService:
 
     @staticmethod
     def create(db: Session, data):
-        batch = Batch(**data.dict())
+        d = to_dict(data)
+        batch = Batch(**d)
         db.add(batch)
         db.commit()
         db.refresh(batch)
@@ -25,7 +28,8 @@ class BatchService:
         if not batch:
             return None, "NOT_FOUND"
 
-        for field, value in data.dict(exclude_unset=True).items():
+        d = to_dict(data)
+        for field, value in d.items():
             setattr(batch, field, value)
 
         db.commit()

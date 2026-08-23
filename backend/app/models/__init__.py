@@ -15,6 +15,16 @@ from app.models.currency import Currency
 from app.models.expense import Expense
 from app.models.notification import Notification
 from app.models.expired_medicine_action import ExpiredMedicineAction
+from app.models.branch import Branch
+from app.models.category import Category
+from app.models.manufacturer import Manufacturer
+from app.models.customer import Customer
+from app.models.stock_movement import StockMovement
+from app.models.stock_adjustment import StockAdjustment
+from app.models.stock_transfer import StockTransfer
+from app.models.return_record import Return, ReturnItem
+from app.models.payment import Payment
+from app.models.disposal import Disposal
 
 __all__ = [
     "User",
@@ -36,4 +46,15 @@ __all__ = [
     "Expense",
     "Notification",
     "ExpiredMedicineAction",
+    "Branch",
+    "Category",
+    "Manufacturer",
+    "Customer",
+    "StockMovement",
+    "StockAdjustment",
+    "StockTransfer",
+    "Return",
+    "ReturnItem",
+    "Payment",
+    "Disposal",
 ]

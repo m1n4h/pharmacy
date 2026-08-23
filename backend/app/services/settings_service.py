@@ -1,5 +1,6 @@
 from sqlalchemy.orm import Session
 from app.models.settings import Settings
+from app.utils.helpers import to_dict
 
 
 class SettingsService:
@@ -14,8 +15,10 @@ class SettingsService:
         if not settings:
             settings = Settings(id=1)
             db.add(settings)
-        for key, value in data.dict().items():
-            setattr(settings, key, value)
+        d = to_dict(data)
+        for key, value in d.items():
+            if value is not None:
+                setattr(settings, key, value)
         db.commit()
         db.refresh(settings)
         return settings

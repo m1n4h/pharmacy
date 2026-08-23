@@ -1,0 +1,405 @@
+// ============================================
+// i18n — Swahili / English Translation System
+// ============================================
+
+window.I18N = {
+    lang: localStorage.getItem('pharmacy_lang') || 'en',
+    translations: {
+        en: {
+            // Sidebar
+            'Dashboard': 'Dashboard',
+            'Medicines': 'Medicines',
+            'Inventory': 'Inventory',
+            'Sales': 'Sales',
+            'Purchases': 'Purchases',
+            'Suppliers': 'Suppliers',
+            'Reports': 'Reports',
+            'Profit & Loss': 'Profit & Loss',
+            'Expenses': 'Expenses',
+            'Expiry Monitor': 'Expiry Monitor',
+            'Prescriptions': 'Prescriptions',
+            'Users & Roles': 'Users & Roles',
+            'Permissions': 'Permissions',
+            'Activities': 'Activities',
+            'Settings': 'Settings',
+            'Backup & Restore': 'Backup & Restore',
+            'Logout': 'Logout',
+            // Page headers
+            'Overview of your pharmacy operations': 'Overview of your pharmacy operations',
+            'Manage your medicine inventory': 'Manage your medicine inventory',
+            'Real-time stock tracking': 'Real-time stock tracking',
+            'Manage sales transactions': 'Manage sales transactions',
+            'Track purchase orders': 'Track purchase orders',
+            'Manage supplier relationships': 'Manage supplier relationships',
+            'Analytics and insights': 'Analytics and insights',
+            'Revenue, costs and net profit': 'Revenue, costs and net profit',
+            'Track operating expenses': 'Track operating expenses',
+            'Monitor and manage expiring stock': 'Monitor and manage expiring stock',
+            'Database backup management': 'Database backup management',
+            'Process and dispense prescriptions': 'Process and dispense prescriptions',
+            'Manage users and their roles': 'Manage users and their roles',
+            'Manage module access per role': 'Manage module access per role',
+            'View all system activities': 'View all system activities',
+            'Configure system settings': 'Configure system settings',
+            // Common
+            'Loading...': 'Loading...',
+            'No data found': 'No data found',
+            'Failed to load': 'Failed to load',
+            'Success': 'Success',
+            'Error': 'Error',
+            'Warning': 'Warning',
+            'Cancel': 'Cancel',
+            'Save': 'Save',
+            'Delete': 'Delete',
+            'Edit': 'Edit',
+            'View': 'View',
+            'Search': 'Search',
+            'Filter': 'Filter',
+            'Refresh': 'Refresh',
+            'Print': 'Print',
+            'Export': 'Export',
+            'Close': 'Close',
+            'Confirm': 'Confirm',
+            'Yes': 'Yes',
+            'No': 'No',
+            'OK': 'OK',
+            'Apply': 'Apply',
+            'Generate': 'Generate',
+            'Submit': 'Submit',
+            'Processing...': 'Processing...',
+            'Are you sure?': 'Are you sure?',
+            // Sales
+            'Sales Dashboard': 'Sales Dashboard',
+            'Create Sale': 'Create Sale',
+            'Period': 'Period',
+            'Today': 'Today',
+            'This Week': 'This Week',
+            'This Month': 'This Month',
+            'Last Month': 'Last Month',
+            '3 Months': '3 Months',
+            '5 Months': '5 Months',
+            '6 Months': '6 Months',
+            'This Year': 'This Year',
+            '5 Years': '5 Years',
+            'Custom Range': 'Custom Range',
+            'Export CSV': 'Export CSV',
+            'Transactions': 'Transactions',
+            'Revenue': 'Revenue',
+            'COGS': 'COGS',
+            'Net Profit': 'Net Profit',
+            'Avg Sale': 'Avg Sale',
+            'Discounts': 'Discounts',
+            'Gross Profit': 'Gross Profit',
+            'Margin': 'Margin',
+            'Generate Report': 'Generate Report',
+            'Sales Records': 'Sales Records',
+            'Invoice #': 'Invoice #',
+            'Date': 'Date',
+            'Customer': 'Customer',
+            'Items': 'Items',
+            'Subtotal': 'Subtotal',
+            'Discount': 'Discount',
+            'Total': 'Total',
+            'Actions': 'Actions',
+            'Create New Sale': 'Create New Sale',
+            'Customer Name': 'Customer Name',
+            'Sale Date': 'Sale Date',
+            'Search Medicine': 'Search Medicine',
+            'Quantity': 'Quantity',
+            'Type medicine name to search...': 'Type medicine name to search...',
+            'Sale Items': 'Sale Items',
+            'Payment Method': 'Payment Method',
+            'Cash': 'Cash',
+            'Mobile Money': 'Mobile Money',
+            'Bank Transfer': 'Bank Transfer',
+            'Card': 'Card',
+            'Credit': 'Credit',
+            'Amount Paid': 'Amount Paid',
+            'Change': 'Change',
+            'Amount Due': 'Amount Due',
+            'Notes': 'Notes',
+            'Complete Sale': 'Complete Sale',
+            // Purchases
+            'New Purchase': 'New Purchase',
+            'Supplier Name': 'Supplier Name',
+            'Purchase Date': 'Purchase Date',
+            'Purchase Items': 'Purchase Items',
+            'Create Purchase': 'Create Purchase',
+            'Batch No': 'Batch No',
+            'Expiry Date': 'Expiry Date',
+            'Buy Price': 'Buy Price',
+            'Sell Price': 'Sell Price',
+            'Add Item': 'Add Item',
+            'Remove': 'Remove',
+            // Medicines
+            'Add Medicine': 'Add Medicine',
+            'Medicine Name': 'Medicine Name',
+            'Generic Name': 'Generic Name',
+            'Brand': 'Brand',
+            'Category': 'Category',
+            'Form': 'Form',
+            'Unit': 'Unit',
+            'Strength': 'Strength',
+            'Default Purchase Price': 'Default Purchase Price',
+            'Default Selling Price': 'Default Selling Price',
+            'Barcode': 'Barcode',
+            'Save Medicine': 'Save Medicine',
+            // Reports
+            'Report Type': 'Report Type',
+            'Purchases Report': 'Purchases Report',
+            'Inventory Report': 'Inventory Report',
+            'Expiry Report': 'Expiry Report',
+            // P&L
+            'Expenses': 'Expenses',
+            'Profit Margin': 'Profit Margin',
+            'Discounts Given': 'Discounts Given',
+            'Monthly Revenue': 'Monthly Revenue',
+            'Profit & Loss Trend': 'Profit & Loss Trend',
+            // Users
+            'Add User': 'Add User',
+            'Full Name': 'Full Name',
+            'Email': 'Email',
+            'Password': 'Password',
+            'Role': 'Role',
+            'Staff': 'Staff',
+            'Admin': 'Admin',
+            'Active': 'Active',
+            'Toggle Active': 'Toggle Active',
+            // Suppliers
+            'Add Supplier': 'Add Supplier',
+            'Company Name': 'Company Name',
+            'Contact Person': 'Contact Person',
+            'Phone': 'Phone',
+            'Address': 'Address',
+            'Save Supplier': 'Save Supplier',
+            // Login
+            'Pharmacy Management': 'Pharmacy Management',
+            'Secure access to your pharmacy dashboard': 'Secure access to your pharmacy dashboard',
+            'Sign In': 'Sign In',
+            'Notifications': 'Notifications',
+            'Mark all read': 'Mark all read',
+        },
+        sw: {
+            // Sidebar
+            'Dashboard': 'Dashibodi',
+            'Medicines': 'Dawa',
+            'Inventory': 'Hifadhi',
+            'Sales': 'Mauzo',
+            'Purchases': 'Ununuzi',
+            'Suppliers': 'Wauzaji',
+            'Reports': 'Ripoti',
+            'Profit & Loss': 'Faida na Hasara',
+            'Expenses': 'Gharama',
+            'Expiry Monitor': 'Ufuatiliaji wa Muda',
+            'Prescriptions': 'Vidokezo',
+            'Users & Roles': 'Watumiaji na Majukumu',
+            'Permissions': 'Ruhusa',
+            'Activities': 'Shughuli',
+            'Settings': 'Mipangilio',
+            'Backup & Restore': 'Hifadhi na Urejeshaji',
+            'Logout': 'Ondoka',
+            // Page headers
+            'Overview of your pharmacy operations': 'Muhtasari wa shughuli za duka lako la dawa',
+            'Manage your medicine inventory': 'Simamia hifadhi yako ya dawa',
+            'Real-time stock tracking': 'Ufuatiliaji wa hisa kwa wakati halisi',
+            'Manage sales transactions': 'Simamia shughuli za mauzo',
+            'Track purchase orders': 'Fuatilia amri za ununuzi',
+            'Manage supplier relationships': 'Simamia uhusiano na wauzaji',
+            'Analytics and insights': 'Uchambuzi na maarifa',
+            'Revenue, costs and net profit': 'Mapato, gharama na faida halisi',
+            'Track operating expenses': 'Fuatilia gharama za uendeshaji',
+            'Monitor and manage expiring stock': 'Fuatilia na simamia hisa zinazoisha muda',
+            'Database backup management': 'Usimamizi wa hifadhi ya data',
+            'Process and dispense prescriptions': 'Chakatisha na peleka vidokezo',
+            'Manage users and their roles': 'Simamia watumiaji na majukumu yao',
+            'Manage module access per role': 'Simamia upatikanaji wa moduli kwa kila jukumu',
+            'View all system activities': 'Tazama shughuli zote za mfumo',
+            'Configure system settings': 'Sadirisha mipangilio ya mfumo',
+            // Common
+            'Loading...': 'Inapakia...',
+            'No data found': 'Hakuna data',
+            'Failed to load': 'Imeshindikana kupakia',
+            'Success': 'Imefanikiwa',
+            'Error': 'Hitilafu',
+            'Warning': 'Onyo',
+            'Cancel': 'Ghairi',
+            'Save': 'Hifadhi',
+            'Delete': 'Futa',
+            'Edit': 'Hariri',
+            'View': 'Tazama',
+            'Search': 'Tafuta',
+            'Filter': 'Chuja',
+            'Refresh': 'Sasisha',
+            'Print': 'Chapisha',
+            'Export': 'Hamisha',
+            'Close': 'Funga',
+            'Confirm': 'Thibitisha',
+            'Yes': 'Ndiyo',
+            'No': 'Hapana',
+            'OK': 'Sawa',
+            'Apply': 'Tumia',
+            'Generate': 'Tengeneza',
+            'Submit': 'Wasilisha',
+            'Processing...': 'Inachakatisha...',
+            'Are you sure?': 'Una uhakika?',
+            // Sales
+            'Sales Dashboard': 'Dashibodi ya Mauzo',
+            'Create Sale': 'Fanya Mauzo',
+            'Period': 'Kipindi',
+            'Today': 'Leo',
+            'This Week': 'Wiki Hii',
+            'This Month': 'Mwezi Huu',
+            'Last Month': 'Mwezi Ulipita',
+            '3 Months': 'Miezi 3',
+            '5 Months': 'Miezi 5',
+            '6 Months': 'Miezi 6',
+            'This Year': 'Mwaka Huu',
+            '5 Years': 'Miaka 5',
+            'Custom Range': 'Kipindi Maalum',
+            'Export CSV': 'Hamisha CSV',
+            'Transactions': 'Shughuli',
+            'Revenue': 'Mapato',
+            'COGS': 'Gharama ya Bidhaa',
+            'Net Profit': 'Faida Halisi',
+            'Avg Sale': 'Wastani wa Mauzo',
+            'Discounts': 'Punguzo',
+            'Gross Profit': 'Faida Ghafi',
+            'Margin': 'Margini',
+            'Generate Report': 'Tengeneza Ripoti',
+            'Sales Records': 'Rekodi za Mauzo',
+            'Invoice #': 'Anuani #',
+            'Date': 'Tarehe',
+            'Customer': 'Mteja',
+            'Items': 'Bidhaa',
+            'Subtotal': 'Jumla Ndogo',
+            'Discount': 'Punguzo',
+            'Total': 'Jumla',
+            'Actions': 'Vitendo',
+            'Create New Sale': 'Fanya Mauzo Mapya',
+            'Customer Name': 'Jina la Mteja',
+            'Sale Date': 'Tarehe ya Mauzo',
+            'Search Medicine': 'Tafuta Dawa',
+            'Quantity': 'Idadi',
+            'Type medicine name to search...': 'Andika jina la dawa kutafuta...',
+            'Sale Items': 'Bidhaa za Mauzo',
+            'Payment Method': 'Njia ya Malipo',
+            'Cash': 'Fedha',
+            'Mobile Money': 'Pesa ya Simu',
+            'Bank Transfer': 'Uhamisho wa Benki',
+            'Card': 'Kadi',
+            'Credit': 'Mkopo',
+            'Amount Paid': 'Kiasi Kilicholipwa',
+            'Change': 'Ziada',
+            'Amount Due': 'Kiasi Kinachodaiwa',
+            'Notes': 'Vidokezo',
+            'Complete Sale': 'Kamilisha Mauzo',
+            // Purchases
+            'New Purchase': 'Ununuzi Mpya',
+            'Supplier Name': 'Jina la Muuzaji',
+            'Purchase Date': 'Tarehe ya Ununuzi',
+            'Purchase Items': 'Bidhaa za Ununuzi',
+            'Create Purchase': 'Fanya Ununuzi',
+            'Batch No': 'Namba ya Kundi',
+            'Expiry Date': 'Tarehe ya Muda',
+            'Buy Price': 'Bei ya Kununua',
+            'Sell Price': 'Bei ya Kuuza',
+            'Add Item': 'Ongeza Bidhaa',
+            'Remove': 'Ondoa',
+            // Medicines
+            'Add Medicine': 'Ongeza Dawa',
+            'Medicine Name': 'Jina la Dawa',
+            'Generic Name': 'Jina la Jumla',
+            'Brand': 'Chapa',
+            'Category': 'Aina',
+            'Form': 'Fomu',
+            'Unit': 'Kitengo',
+            'Strength': 'Ugumu',
+            'Default Purchase Price': 'Bei ya Kununua',
+            'Default Selling Price': 'Bei ya Kuuza',
+            'Barcode': 'Nambari ya Msimbo',
+            'Save Medicine': 'Hifadhi Dawa',
+            // Reports
+            'Report Type': 'Aina ya Ripoti',
+            'Purchases Report': 'Ripoti ya Ununuzi',
+            'Inventory Report': 'Ripoti ya Hifadhi',
+            'Expiry Report': 'Ripoti ya Muda',
+            // P&L
+            'Profit Margin': 'Margini ya Faida',
+            'Discounts Given': 'Punguzo Zilizotolewa',
+            'Monthly Revenue': 'Mapato ya Kila Mwezi',
+            'Profit & Loss Trend': 'Mwenendo wa Faida na Hasara',
+            // Users
+            'Add User': 'Ongeza Mtumiaji',
+            'Full Name': 'Jina Kamili',
+            'Email': 'Barua Pepe',
+            'Password': 'Nenosiri',
+            'Role': 'Jukumu',
+            'Staff': 'Wafanyakazi',
+            'Admin': 'Msimamizi',
+            'Active': 'Hai',
+            'Toggle Active': 'Badilisha Hali',
+            // Suppliers
+            'Add Supplier': 'Ongeza Muuzaji',
+            'Company Name': 'Jina la Kampuni',
+            'Contact Person': 'Mtu wa Mawasiliano',
+            'Phone': 'Simu',
+            'Address': 'Anwani',
+            'Save Supplier': 'Hifadhi Muuzaji',
+            // Login
+            'Pharmacy Management': 'Usimamizi wa Duka la Dawa',
+            'Secure access to your pharmacy dashboard': 'Upatikanaji salama kwa dashibodi yako',
+            'Sign In': 'Ingia',
+            'Notifications': 'Arifa',
+            'Mark all read': 'Weka zote imesomwa',
+        }
+    }
+};
+
+window.t = function(key) {
+    var lang = window.I18N.lang || 'en';
+    var val = window.I18N.translations[lang] && window.I18N.translations[lang][key];
+    if (val !== undefined) return val;
+    var enVal = window.I18N.translations.en && window.I18N.translations.en[key];
+    if (enVal !== undefined) return enVal;
+    return key;
+};
+
+window.applyTranslations = function() {
+    document.querySelectorAll('[data-i18n]').forEach(function(el) {
+        var key = el.getAttribute('data-i18n');
+        var translated = window.t(key);
+        if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+            if (el.hasAttribute('placeholder')) {
+                el.setAttribute('placeholder', translated);
+            } else {
+                el.value = translated;
+            }
+        } else {
+            el.textContent = translated;
+        }
+    });
+    var langBtn = document.getElementById('langToggle');
+    if (langBtn) {
+        langBtn.textContent = window.I18N.lang === 'sw' ? 'SW' : 'EN';
+    }
+};
+
+window.setLanguage = function(lang) {
+    if (lang !== 'en' && lang !== 'sw') return;
+    window.I18N.lang = lang;
+    localStorage.setItem('pharmacy_lang', lang);
+    document.documentElement.lang = lang;
+    window.applyTranslations();
+    var active = document.querySelector('.menu-item.active');
+    var page = active?.dataset?.page;
+    if (page && typeof navigateTo === 'function') {
+        navigateTo(page);
+    }
+};
+
+window.toggleLanguage = function() {
+    var next = window.I18N.lang === 'en' ? 'sw' : 'en';
+    window.setLanguage(next);
+};
+
+console.log('Language module loaded');

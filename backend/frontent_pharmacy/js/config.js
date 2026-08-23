@@ -18,9 +18,15 @@ window.APP_CONFIG = {
 // MONEY FORMATTING (TZS by default)
 // ============================================
 function formatMoney(amount) {
-    const n = Number(amount) || 0;
+    const raw = Number(amount);
+    const n = (Number.isFinite(raw) && raw >= 0) ? raw : Math.abs(Number.isFinite(raw) ? raw : 0);
     const sym = (window.APP_CONFIG && window.APP_CONFIG.currencySymbol) || 'TSh';
     return sym + ' ' + n.toLocaleString('en-US', { maximumFractionDigits: 0 });
+}
+
+function safeNumber(val) {
+    const n = Number(val);
+    return Number.isFinite(n) && n >= 0 ? n : 0;
 }
 
 // Convert a foreign-currency amount to TZS using stored rates
