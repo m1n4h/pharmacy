@@ -8,6 +8,9 @@ class CategoryService:
     @staticmethod
     def create(db: Session, data):
         d = to_dict(data)
+        existing = db.query(Category).filter(Category.name == d.get("name")).first()
+        if existing:
+            return None
         category = Category(**d)
         db.add(category)
         db.commit()

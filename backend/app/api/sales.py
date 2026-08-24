@@ -1,4 +1,5 @@
 from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi.responses import JSONResponse
 from sqlalchemy.orm import Session
 from typing import List
 
@@ -126,14 +127,15 @@ def create_sale(
     try:
         sale = SaleService.create_sale(db, payload)
     except Exception as exc:
-        # Known business error strings from service or Python exceptions are returned cleanly
         message = str(exc)
-        # If it's a stock / batch problem, return 400 with structured error
-        return {
-            "success": False,
-            "message": message,
-            "error": "BUSINESS_ERROR"
-        }
+        return JSONResponse(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            content={
+                "success": False,
+                "message": message,
+                "error": "BUSINESS_ERROR"
+            }
+        )
 
     # format response
     from app.services.activity_service import ActivityService

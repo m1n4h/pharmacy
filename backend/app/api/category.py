@@ -19,6 +19,8 @@ def create_category(
     current_user = Depends(get_current_user)
 ):
     category = CategoryService.create(db, payload)
+    if not category:
+        return {"success": False, "message": "Category already exists", "error": "DUPLICATE"}
 
     from app.services.activity_service import ActivityService
     ActivityService.log(

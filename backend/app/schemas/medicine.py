@@ -1,4 +1,4 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, field_validator
 
 class MedicineAISuggestSchema(BaseModel):
     name: str
@@ -19,6 +19,20 @@ class MedicineBase(BaseModel):
     image_url: str | None = None
     default_purchase_price: float | None = 0
     default_selling_price: float | None = 0
+
+    @field_validator("name")
+    @classmethod
+    def validate_name(cls, v):
+        if not v or not v.strip():
+            raise ValueError("Medicine name cannot be empty")
+        return v.strip()
+
+    @field_validator("default_purchase_price", "default_selling_price")
+    @classmethod
+    def validate_prices(cls, v):
+        if v is not None and v < 0:
+            raise ValueError("Price cannot be negative")
+        return v
 
 
 class MedicineCreateSchema(MedicineBase):

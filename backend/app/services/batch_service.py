@@ -30,7 +30,8 @@ class BatchService:
 
         d = to_dict(data)
         for field, value in d.items():
-            setattr(batch, field, value)
+            if value is not None:
+                setattr(batch, field, value)
 
         db.commit()
         db.refresh(batch)

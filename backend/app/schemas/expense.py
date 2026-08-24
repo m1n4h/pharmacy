@@ -1,13 +1,13 @@
 from pydantic import BaseModel, field_validator
 from typing import Optional
-from datetime import date
+from datetime import date as DateType
 
 
 class ExpenseCreate(BaseModel):
     category: str
     description: Optional[str] = None
     amount: float
-    date: date
+    date: DateType
     payment_method: Optional[str] = "Cash"
     reference: Optional[str] = None
     notes: Optional[str] = None
@@ -24,7 +24,7 @@ class ExpenseUpdate(BaseModel):
     category: Optional[str] = None
     description: Optional[str] = None
     amount: Optional[float] = None
-    date: Optional[date] = None
+    date: Optional[DateType] = None
     payment_method: Optional[str] = None
     reference: Optional[str] = None
     notes: Optional[str] = None
@@ -35,7 +35,7 @@ class ExpenseResponse(BaseModel):
     category: str
     description: Optional[str]
     amount: float
-    date: date
+    date: DateType
     payment_method: Optional[str]
     reference: Optional[str]
     notes: Optional[str]

@@ -8,6 +8,11 @@ class BranchService:
     @staticmethod
     def create(db: Session, data):
         d = to_dict(data)
+        code = d.get("code")
+        if code:
+            existing = db.query(Branch).filter(Branch.code == code).first()
+            if existing:
+                return None
         branch = Branch(**d)
         db.add(branch)
         db.commit()

@@ -62,13 +62,9 @@ class ExpenseService:
         if not expense:
             return None
         d = to_dict(data)
-        for field in ["category", "description", "amount", "date", "payment_method", "reference", "notes"]:
-            if field in d:
-                setattr(expense, field, d[field])
-            else:
-                val = get_attr(data, field, None)
-                if val is not None:
-                    setattr(expense, field, val)
+        for field, value in d.items():
+            if value is not None:
+                setattr(expense, field, value)
         db.commit()
         db.refresh(expense)
         return expense

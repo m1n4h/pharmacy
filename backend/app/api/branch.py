@@ -19,6 +19,8 @@ def create_branch(
     current_user = Depends(get_current_user)
 ):
     branch = BranchService.create(db, payload)
+    if not branch:
+        return {"success": False, "message": "Branch with this code already exists", "error": "DUPLICATE"}
 
     from app.services.activity_service import ActivityService
     ActivityService.log(

@@ -6,13 +6,25 @@ class SaleItemCreate(BaseModel):
     medicine_id: int
     quantity: int
 
+    def model_post_init(self, __context):
+        if self.quantity <= 0:
+            raise ValueError("Quantity must be positive")
+
 
 class SaleCreate(BaseModel):
     invoice_number: str | None = None
     customer_name: str | None = None
     sale_date: date | None = None
     discount_amount: float = 0
+    payment_method: str | None = "Cash"
+    amount_paid: float | None = 0
     items: List[SaleItemCreate]
+
+    def model_post_init(self, __context):
+        if self.discount_amount < 0:
+            raise ValueError("Discount cannot be negative")
+        if self.amount_paid is not None and self.amount_paid < 0:
+            raise ValueError("Amount paid cannot be negative")
 
 
 class SaleUpdate(BaseModel):
