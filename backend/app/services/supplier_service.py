@@ -8,6 +8,9 @@ class SupplierService:
     @staticmethod
     def create_supplier(db: Session, data):
         d = to_dict(data)
+        existing = db.query(Supplier).filter(Supplier.name == d.get("name")).first()
+        if existing:
+            return None
         supplier = Supplier(**d)
         db.add(supplier)
         db.commit()

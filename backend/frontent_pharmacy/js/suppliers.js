@@ -10,9 +10,9 @@ async function renderSuppliers() {
         content.innerHTML = `
             <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2">
                 <button class="btn btn-primary" onclick="openAddSupplierModal()">
-                    <i class="fas fa-plus"></i> Add Supplier
+                    <i class="fas fa-plus"></i> ${t('Add Supplier')}
                 </button>
-                <span class="text-muted">Total: ${suppliers.length} suppliers</span>
+                <span class="text-muted">Total: ${suppliers.length} ${t('Suppliers')}</span>
             </div>
             <div class="row">
                 ${suppliers.map(supplier => `
@@ -35,7 +35,7 @@ async function renderSuppliers() {
             </div>
         `;
     } catch (error) {
-        content.innerHTML = `<div class="alert alert-danger">Failed to load suppliers: ${error.message}</div>`;
+        content.innerHTML = `<div class="alert alert-danger">${t('Failed to load')}: ${error.message}</div>`;
     }
 }
 
@@ -55,14 +55,14 @@ async function saveSupplier() {
     };
     
     if (!data.name) {
-        SwalAlert.warning('Supplier name is required!');
+        SwalAlert.warning(t('Supplier name is required'));
         return;
     }
     
     try {
         await api.createSupplier(data);
         bootstrap.Modal.getInstance(document.getElementById('addSupplierModal')).hide();
-        SwalAlert.success('Supplier added successfully!');
+        SwalAlert.success(t('Supplier added successfully'));
         navigateTo('suppliers');
     } catch (error) {
         SwalAlert.error(error.message);

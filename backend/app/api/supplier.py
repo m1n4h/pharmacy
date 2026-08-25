@@ -1,4 +1,5 @@
 from fastapi import APIRouter, Depends
+from fastapi.responses import JSONResponse
 from sqlalchemy.orm import Session
 
 from app.core.deps import get_current_user
@@ -19,6 +20,8 @@ def create_supplier(
     current_user = Depends(get_current_user)
 ):
     supplier = SupplierService.create_supplier(db, payload)
+    if not supplier:
+        return JSONResponse(status_code=400, content={"success": False, "message": "Supplier already exists", "error": "DUPLICATE"})
 
     from app.services.activity_service import ActivityService
     ActivityService.log(

@@ -84,7 +84,7 @@ async function aiSuggestMedicine() {
     const hint = document.getElementById('aiSuggestHint');
     const name = nameInput.value.trim();
     if (!name) {
-        SwalAlert.warning('Andika jina la dawa kwanza (mf. "Amoxicillin 500mg capsules")');
+        SwalAlert.warning(t('Enter medicine name first'));
         nameInput.focus();
         return;
     }
@@ -132,17 +132,17 @@ async function saveMedicine() {
     };
     
     if (!data.name) {
-        SwalAlert.warning('Medicine name is required!');
+        SwalAlert.warning(t('Medicine name is required'));
         return;
     }
     
     try {
         if (editingMedicineId) {
             await api.updateMedicine(editingMedicineId, data);
-            SwalAlert.success('Medicine updated successfully!');
+            SwalAlert.success(t('Medicine updated successfully'));
         } else {
             await api.createMedicine(data);
-            SwalAlert.success('Medicine added successfully!');
+            SwalAlert.success(t('Medicine added successfully'));
         }
         editingMedicineId = null;
         bootstrap.Modal.getInstance(document.getElementById('addMedicineModal')).hide();
@@ -153,11 +153,11 @@ async function saveMedicine() {
 }
 
 async function deleteMedicine(id) {
-    const result = await SwalAlert.confirm('Are you sure you want to delete this medicine?');
+    const result = await SwalAlert.confirm(t('Are you sure you want to delete this medicine?'));
     if (!result.isConfirmed) return;
     try {
         await api.deleteMedicine(id);
-        SwalAlert.success('Medicine deleted successfully!');
+        SwalAlert.success(t('Medicine deleted successfully'));
         navigateTo('medicines');
     } catch (error) {
         SwalAlert.error(error.message);

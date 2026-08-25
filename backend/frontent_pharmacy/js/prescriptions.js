@@ -118,7 +118,7 @@ async function editPrescription(id) {
 }
 
 async function deletePrescription(id) {
-    const result = await SwalAlert.confirm('Delete this prescription? This cannot be undone.');
+    const result = await SwalAlert.confirm(t('Delete this prescription? This cannot be undone'));
     if (!result.isConfirmed) return;
     try {
         const res = await api.deletePrescription(id);
@@ -126,7 +126,7 @@ async function deletePrescription(id) {
             SwalAlert.error(res.message || 'Unknown error');
             return;
         }
-        SwalAlert.success('Prescription deleted.');
+        SwalAlert.success(t('Prescription deleted'));
         renderPrescriptions();
     } catch (error) {
         SwalAlert.error(error.message);
@@ -225,7 +225,7 @@ function updateRxCart() {
 
 async function createPrescription() {
     if (rxCart.length === 0) {
-        SwalAlert.warning('Please add at least one medicine!');
+        SwalAlert.warning(t('Please add at least one medicine'));
         return;
     }
     const data = {
@@ -250,7 +250,7 @@ async function createPrescription() {
             return;
         }
         bootstrap.Modal.getInstance(document.getElementById('createPrescriptionModal')).hide();
-        SwalAlert.success(editingRxId ? 'Prescription updated successfully!' : 'Prescription created successfully!');
+        SwalAlert.success(editingRxId ? t('Prescription updated successfully') : t('Prescription created successfully'));
         editingRxId = null;
         navigateTo('prescriptions');
     } catch (error) {
@@ -269,7 +269,7 @@ async function viewPrescription(id) {
 }
 
 async function dispensePrescription(id) {
-    const result = await SwalAlert.confirm('Dispense this prescription? Stock itapunguzwa.');
+    const result = await SwalAlert.confirm(t('Dispense this prescription? Stock will be deducted'));
     if (!result.isConfirmed) return;
     try {
         const result = await api.dispensePrescription(id);
@@ -277,7 +277,7 @@ async function dispensePrescription(id) {
             SwalAlert.error(result.message || 'Unknown error');
             return;
         }
-        SwalAlert.success('Prescription dispensed successfully!');
+        SwalAlert.success(t('Prescription dispensed successfully'));
         renderPrescriptions();
     } catch (error) {
         SwalAlert.error(error.message);
@@ -285,7 +285,7 @@ async function dispensePrescription(id) {
 }
 
 async function cancelPrescription(id) {
-    const result = await SwalAlert.confirm('Cancel this prescription?');
+    const result = await SwalAlert.confirm(t('Cancel this prescription'));
     if (!result.isConfirmed) return;
     try {
         const result = await api.cancelPrescription(id);
@@ -293,7 +293,7 @@ async function cancelPrescription(id) {
             SwalAlert.error(result.message || 'Unknown error');
             return;
         }
-        SwalAlert.success('Prescription cancelled.');
+        SwalAlert.success(t('Prescription cancelled'));
         renderPrescriptions();
     } catch (error) {
         SwalAlert.error(error.message);

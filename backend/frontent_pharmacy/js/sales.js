@@ -28,12 +28,22 @@ async function renderSales() {
     const content = document.getElementById('pageContent');
     const period = document.getElementById('salesPeriod')?.value || 'month';
 
+    const isAdmin = (localStorage.getItem('userRole') || '').toLowerCase() === 'admin' || (localStorage.getItem('userRole') || '').toLowerCase() === 'superadmin';
+
     content.innerHTML = `
         <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2">
             <h4 class="mb-0"><i class="fas fa-cash-register me-2"></i>Sales Dashboard</h4>
-            <button class="btn btn-success" onclick="openSaleModal()">
-                <i class="fas fa-plus"></i> Create Sale
-            </button>
+            <div class="d-flex gap-2">
+                ${isAdmin ? `<button class="btn btn-outline-info" onclick="showUploadHistory()">
+                    <i class="fas fa-history"></i> ${t('Upload History')}
+                </button>` : ''}
+                ${isAdmin ? `<button class="btn btn-info" onclick="openUploadSalesModal()">
+                    <i class="fas fa-cloud-upload-alt"></i> ${t('Upload Sales')}
+                </button>` : ''}
+                <button class="btn btn-success" onclick="openSaleModal()">
+                    <i class="fas fa-plus"></i> ${t('Create Sale')}
+                </button>
+            </div>
         </div>
 
         <div class="d-flex align-items-center gap-2 mb-4 flex-wrap">

@@ -8,6 +8,9 @@ class ManufacturerService:
     @staticmethod
     def create(db: Session, data):
         d = to_dict(data)
+        existing = db.query(Manufacturer).filter(Manufacturer.name == d.get("name")).first()
+        if existing:
+            return None
         manufacturer = Manufacturer(**d)
         db.add(manufacturer)
         db.commit()

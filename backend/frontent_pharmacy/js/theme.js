@@ -14,9 +14,9 @@ window.ThemeManager = {
         localStorage.setItem(this.STORAGE_KEY, theme);
         const btn = document.getElementById('themeToggle');
         if (btn) {
-            btn.innerHTML = theme === 'dark' 
-                ? '<i class="fas fa-sun"></i>' 
-                : '<i class="fas fa-moon"></i>';
+            const icon = theme === 'dark' ? 'fa-moon' : 'fa-sun';
+            const label = theme === 'dark' ? 'Dark' : 'Light';
+            btn.innerHTML = `<i class="fas ${icon} me-1"></i><span class="d-none d-sm-inline">${label}</span>`;
             btn.title = theme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode';
         }
     },

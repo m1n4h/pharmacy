@@ -166,11 +166,11 @@ function selectBatchForTransfer(batchNo, quantity) {
 
 async function saveStockTransfer() {
     if (!transferSelectedMedicine) {
-        SwalAlert.warning('Please select a medicine!');
+        SwalAlert.warning(t('Please select a medicine'));
         return;
     }
     if (!transferSelectedBatch) {
-        SwalAlert.warning('Please select a batch!');
+        SwalAlert.warning(t('Please select a batch'));
         return;
     }
 
@@ -180,23 +180,23 @@ async function saveStockTransfer() {
     const notes = document.getElementById('transfer_notes').value;
 
     if (!fromBranch) {
-        SwalAlert.warning('Please select source branch!');
+        SwalAlert.warning(t('Please select source branch'));
         return;
     }
     if (!toBranch) {
-        SwalAlert.warning('Please select destination branch!');
+        SwalAlert.warning(t('Please select destination branch'));
         return;
     }
     if (fromBranch === toBranch) {
-        SwalAlert.warning('Source and destination branches must be different!');
+        SwalAlert.warning(t('Source and destination branches must be different'));
         return;
     }
     if (!quantity || quantity <= 0) {
-        SwalAlert.warning('Please enter a valid quantity!');
+        SwalAlert.warning(t('Please enter a valid quantity'));
         return;
     }
     if (transferSelectedBatch && quantity > transferSelectedBatch.available_quantity) {
-        SwalAlert.warning(`Quantity exceeds available stock (${transferSelectedBatch.available_quantity})!`);
+        SwalAlert.warning(t('Quantity exceeds available stock').replace('{qty}', transferSelectedBatch.available_quantity));
         return;
     }
 
@@ -215,7 +215,7 @@ async function saveStockTransfer() {
     try {
         await api.createStockTransfer(data);
         bootstrap.Modal.getInstance(document.getElementById('stockTransferModal')).hide();
-        SwalAlert.success('Stock transfer submitted successfully!');
+        SwalAlert.success(t('Stock transfer submitted successfully'));
         renderStockTransfers();
     } catch (error) {
         SwalAlert.error(error.message);
@@ -225,11 +225,11 @@ async function saveStockTransfer() {
 }
 
 async function approveStockTransfer(id) {
-    const result = await SwalAlert.confirm('Approve this stock transfer?');
+    const result = await SwalAlert.confirm(t('Approve this stock transfer?'));
     if (!result.isConfirmed) return;
     try {
         await api.approveStockTransfer(id);
-        SwalAlert.success('Stock transfer approved!');
+        SwalAlert.success(t('Stock transfer approved'));
         renderStockTransfers();
     } catch (error) {
         SwalAlert.error(error.message);
@@ -237,11 +237,11 @@ async function approveStockTransfer(id) {
 }
 
 async function rejectStockTransfer(id) {
-    const result = await SwalAlert.confirm('Reject this stock transfer?');
+    const result = await SwalAlert.confirm(t('Reject this stock transfer?'));
     if (!result.isConfirmed) return;
     try {
         await api.rejectStockTransfer(id);
-        SwalAlert.success('Stock transfer rejected!');
+        SwalAlert.success(t('Stock transfer rejected'));
         renderStockTransfers();
     } catch (error) {
         SwalAlert.error(error.message);

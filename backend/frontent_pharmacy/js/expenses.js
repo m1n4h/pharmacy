@@ -72,7 +72,7 @@ async function editExpense(id) {
     try {
         const res = await api.listExpenses({});
         const e = (res.data.items || []).find(x => x.id === id);
-        if (!e) { SwalAlert.error('Expense not found'); return; }
+        if (!e) { SwalAlert.error(t('Expense not found')); return; }
         editingExpenseId = id;
         document.getElementById('exp_category').value = e.category;
         document.getElementById('exp_description').value = e.description || '';
@@ -100,7 +100,7 @@ async function saveExpense() {
         notes: document.getElementById('exp_notes').value || null
     };
     if (!data.amount || data.amount <= 0 || !data.date) {
-        SwalAlert.warning('Jaza kiasi na tarehe sahihi!');
+        SwalAlert.warning(t('Enter valid amount and date'));
         return;
     }
     try {
@@ -118,7 +118,7 @@ async function saveExpense() {
 }
 
 async function deleteExpense(id) {
-    const result = await SwalAlert.confirm('Futa gharama hii?');
+    const result = await SwalAlert.confirm(t('Delete this expense?'));
     if (!result.isConfirmed) return;
     try {
         await api.deleteExpense(id);

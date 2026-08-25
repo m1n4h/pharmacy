@@ -1,4 +1,5 @@
 from fastapi import APIRouter, Depends
+from fastapi.responses import JSONResponse
 from sqlalchemy.orm import Session
 
 from app.core.deps import get_current_user
@@ -20,7 +21,7 @@ def create_branch(
 ):
     branch = BranchService.create(db, payload)
     if not branch:
-        return {"success": False, "message": "Branch with this code already exists", "error": "DUPLICATE"}
+        return JSONResponse(status_code=400, content={"success": False, "message": "Branch with this code already exists", "error": "DUPLICATE"})
 
     from app.services.activity_service import ActivityService
     ActivityService.log(

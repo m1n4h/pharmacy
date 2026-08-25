@@ -176,11 +176,11 @@ function updateAdjustmentDiff() {
 
 async function saveStockAdjustment() {
     if (!stockAdjustmentSelectedMedicine) {
-        SwalAlert.warning('Please select a medicine!');
+        SwalAlert.warning(t('Please select a medicine'));
         return;
     }
     if (!stockAdjustmentSelectedBatch) {
-        SwalAlert.warning('Please select a batch!');
+        SwalAlert.warning(t('Please select a batch'));
         return;
     }
 
@@ -189,12 +189,12 @@ async function saveStockAdjustment() {
     const notes = document.getElementById('adjustment_notes').value;
 
     if (!physicalQty && physicalQty !== 0) {
-        SwalAlert.warning('Please enter physical quantity!');
+        SwalAlert.warning(t('Please enter physical quantity'));
         return;
     }
 
     if (!reason) {
-        SwalAlert.warning('Please enter a reason for the adjustment!');
+        SwalAlert.warning(t('Please enter a reason for the adjustment'));
         return;
     }
 
@@ -213,7 +213,7 @@ async function saveStockAdjustment() {
     try {
         await api.createStockAdjustment(data);
         bootstrap.Modal.getInstance(document.getElementById('stockAdjustmentModal')).hide();
-        SwalAlert.success('Stock adjustment submitted successfully!');
+        SwalAlert.success(t('Stock adjustment submitted successfully'));
         renderStockAdjustments();
     } catch (error) {
         SwalAlert.error(error.message);
@@ -223,11 +223,11 @@ async function saveStockAdjustment() {
 }
 
 async function approveStockAdjustment(id) {
-    const result = await SwalAlert.confirm('Approve this stock adjustment?');
+    const result = await SwalAlert.confirm(t('Approve this stock adjustment?'));
     if (!result.isConfirmed) return;
     try {
         await api.approveStockAdjustment(id);
-        SwalAlert.success('Stock adjustment approved!');
+        SwalAlert.success(t('Stock adjustment approved'));
         renderStockAdjustments();
     } catch (error) {
         SwalAlert.error(error.message);
@@ -235,11 +235,11 @@ async function approveStockAdjustment(id) {
 }
 
 async function rejectStockAdjustment(id) {
-    const result = await SwalAlert.confirm('Reject this stock adjustment?');
+    const result = await SwalAlert.confirm(t('Reject this stock adjustment?'));
     if (!result.isConfirmed) return;
     try {
         await api.rejectStockAdjustment(id);
-        SwalAlert.success('Stock adjustment rejected!');
+        SwalAlert.success(t('Stock adjustment rejected'));
         renderStockAdjustments();
     } catch (error) {
         SwalAlert.error(error.message);

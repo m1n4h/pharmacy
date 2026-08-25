@@ -280,7 +280,7 @@ function removePurchaseItem(btn) {
     if (document.querySelectorAll('.purchase-item-row').length > 1) {
         row.remove();
     } else {
-        SwalAlert.warning('At least one item is required!');
+        SwalAlert.warning(t('At least one item is required'));
     }
 }
 
@@ -317,18 +317,18 @@ async function createPurchase() {
     });
     
     if (!valid) {
-        SwalAlert.warning('Please fill all required fields in each item row!');
+        SwalAlert.warning(t('Please fill all required fields in each item row'));
         return;
     }
     
     if (items.length === 0) {
-        SwalAlert.warning('Please add at least one valid item!');
+        SwalAlert.warning(t('Please add at least one valid item'));
         return;
     }
     
     const supplierName = document.getElementById('purchase_supplier').value.trim();
     if (!supplierName) {
-        SwalAlert.warning('Please enter a supplier name!');
+        SwalAlert.warning(t('Please enter a supplier name'));
         return;
     }
     
@@ -342,10 +342,10 @@ async function createPurchase() {
     try {
         await api.createPurchase(data);
         bootstrap.Modal.getInstance(document.getElementById('createPurchaseModal')).hide();
-        SwalAlert.success('Purchase created successfully!');
+        SwalAlert.success(t('Purchase created successfully'));
         navigateTo('purchases');
     } catch (error) {
-        SwalAlert.error('Failed to create purchase: ' + error.message);
+        SwalAlert.error(t('Failed to create purchase') + ': ' + error.message);
     }
 }
 
@@ -354,7 +354,7 @@ async function viewPurchase(id) {
         const purchase = await api.getPurchase(id);
         SwalAlert.success(`Purchase #${purchase.invoice_number}\nSupplier: ${purchase.supplier_name}\nTotal: ${formatMoney(purchase.total_amount)}\nItems: ${purchase.items?.length || 0}`);
     } catch (error) {
-        SwalAlert.error('Failed to load purchase: ' + error.message);
+        SwalAlert.error(t('Failed to load purchase') + ': ' + error.message);
     }
 }
 

@@ -111,7 +111,7 @@ async function submitExpiryAction() {
         reason: document.getElementById('exp_act_reason').value || null
     };
     if (!data.quantity || data.quantity <= 0) {
-        SwalAlert.warning('Weka kiasi sahihi!');
+        SwalAlert.warning(t('Enter valid quantity'));
         return;
     }
     try {

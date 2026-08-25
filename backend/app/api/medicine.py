@@ -1,4 +1,5 @@
 from fastapi import APIRouter, Depends
+from fastapi.responses import JSONResponse
 from sqlalchemy.orm import Session
 
 from app.schemas.medicine import MedicineCreateSchema, MedicineUpdateSchema, MedicineAISuggestSchema
@@ -40,11 +41,14 @@ def create_medicine(
     med, error = MedicineService.create(db, payload)
 
     if error == "MEDICINE_EXISTS":
-        return {
-            "success": False,
-            "message": "Medicine name already exists",
-            "error": "MEDICINE_EXISTS"
-        }
+        return JSONResponse(
+            status_code=400,
+            content={
+                "success": False,
+                "message": "Medicine name already exists",
+                "error": "MEDICINE_EXISTS"
+            }
+        )
 
     from app.services.activity_service import ActivityService
     ActivityService.log(

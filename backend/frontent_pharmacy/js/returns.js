@@ -13,20 +13,20 @@ async function renderReturns() {
         content.innerHTML = `
             <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2">
                 <button class="btn btn-primary" onclick="openReturnModal()">
-                    <i class="fas fa-plus"></i> <span data-i18n="processReturn">Process Return</span>
+                    <i class="fas fa-plus"></i> <span data-i18n="Process Return">Process Return</span>
                 </button>
-                <span class="text-muted">Total: ${returns.length} <span data-i18n="returns">returns</span></span>
+                <span class="text-muted">Total: ${returns.length} <span data-i18n="Returns">Returns</span></span>
             </div>
             <div class="table-container">
                 <table class="table table-hover" id="returnsTable">
                     <thead>
                         <tr>
-                            <th data-i18n="returnNumber">Return #</th>
-                            <th data-i18n="saleInvoice">Sale Invoice</th>
-                            <th data-i18n="customer">Customer</th>
-                            <th data-i18n="totalRefund">Total Refund</th>
-                            <th data-i18n="status">Status</th>
-                            <th data-i18n="date">Date</th>
+                            <th>Return #</th>
+                            <th>Sale Invoice</th>
+                            <th data-i18n="Customer">Customer</th>
+                            <th>Total Refund</th>
+                            <th data-i18n="Status">Status</th>
+                            <th data-i18n="Date">Date</th>
                         </tr>
                     </thead>
                     <tbody id="returnsTableBody">
@@ -34,7 +34,7 @@ async function renderReturns() {
                             <tr>
                                 <td><strong>${r.return_number || 'R-' + r.id}</strong></td>
                                 <td>${r.sale_invoice_number || '-'}</td>
-                                <td>${r.customer_name || 'Walk-in'}</td>
+                                <td>${r.customer_name || t('Walk-in Customer')}</td>
                                 <td><strong>${formatMoney(r.total_refund || 0)}</strong></td>
                                 <td>
                                     <span class="badge ${r.status === 'completed' ? 'bg-success' : r.status === 'pending' ? 'bg-warning text-dark' : 'bg-secondary'}">
@@ -43,13 +43,13 @@ async function renderReturns() {
                                 </td>
                                 <td>${r.return_date ? new Date(r.return_date).toLocaleDateString() : '-'}</td>
                             </tr>
-                        `).join('') || '<tr><td colspan="6" class="text-center text-muted">No returns found.</td></tr>'}
+                        `).join('')                     || `<tr><td colspan="6" class="text-center text-muted">${t('No data found')}</td></tr>`}
                     </tbody>
                 </table>
             </div>
         `;
     } catch (error) {
-        content.innerHTML = `<div class="alert alert-danger">Failed to load returns: ${error.message}</div>`;
+        content.innerHTML = `<div class="alert alert-danger">${t('Failed to load')}: ${error.message}</div>`;
     }
 }
 
@@ -58,7 +58,7 @@ function openReturnModal() {
     returnSaleData = null;
     returnItems = [];
     document.getElementById('returnSearchResults').innerHTML = '';
-    document.getElementById('returnItemsContainer').innerHTML = '<p class="text-muted text-center">Search for a sale invoice first.</p>';
+    document.getElementById('returnItemsContainer').innerHTML = `<p class="text-muted text-center">${t('Search')}...</p>`;
     document.getElementById('returnSummary').innerHTML = '';
     const btn = document.getElementById('returnSaveBtn');
     if (btn) btn.disabled = true;
@@ -73,7 +73,7 @@ async function searchSaleForReturn(query) {
         resultsDiv.innerHTML = '';
         returnSaleData = null;
         returnItems = [];
-        document.getElementById('returnItemsContainer').innerHTML = '<p class="text-muted text-center">Search for a sale invoice first.</p>';
+        document.getElementById('returnItemsContainer').innerHTML = `<p class="text-muted text-center">${t('Search')}...</p>`;
         document.getElementById('returnSummary').innerHTML = '';
         return;
     }
@@ -88,7 +88,7 @@ async function searchSaleForReturn(query) {
             );
 
             if (!matches || matches.length === 0) {
-                resultsDiv.innerHTML = '<p class="text-muted">No sales found matching this query</p>';
+                resultsDiv.innerHTML = `<p class="text-muted">${t('No data found')}</p>`;
                 return;
             }
 
@@ -98,13 +98,13 @@ async function searchSaleForReturn(query) {
                         <button type="button" class="list-group-item list-group-item-action"
                             onclick="selectSaleForReturn(${s.id}, '${(s.invoice_number || '').replace(/'/g, "\\'")}')">
                             <strong>${s.invoice_number || 'Sale #' + s.id}</strong>
-                            <small class="text-muted ms-2">${s.customer_name || 'Walk-in'} - ${formatMoney(s.total_amount || 0)}</small>
+                            <small class="text-muted ms-2">${s.customer_name || t('Walk-in Customer')} - ${formatMoney(s.total_amount || 0)}</small>
                         </button>
                     `).join('')}
                 </div>
             `;
         } catch (e) {
-            resultsDiv.innerHTML = '<p class="text-danger">Error searching sales</p>';
+            resultsDiv.innerHTML = `<p class="text-danger">${t('Error')}</p>`;
         }
     }, 300);
 }
@@ -120,7 +120,7 @@ async function selectSaleForReturn(saleId, invoiceNumber) {
 
         const items = sale.items || [];
         if (items.length === 0) {
-            document.getElementById('returnItemsContainer').innerHTML = '<p class="text-warning">This sale has no items to return.</p>';
+            document.getElementById('returnItemsContainer').innerHTML = `<p class="text-warning">${t('No data found')}</p>`;
             document.getElementById('returnSaveBtn').disabled = true;
             return;
         }
@@ -130,12 +130,12 @@ async function selectSaleForReturn(saleId, invoiceNumber) {
                 <thead>
                     <tr>
                         <th><input type="checkbox" id="returnSelectAll" onchange="toggleAllReturnItems(this.checked)"></th>
-                        <th data-i18n="medicine">Medicine</th>
-                        <th data-i18n="quantity">Qty Sold</th>
-                        <th data-i18n="price">Price</th>
-                        <th data-i18n="returnQty">Return Qty</th>
-                        <th data-i18n="reason">Reason</th>
-                        <th data-i18n="condition">Condition</th>
+                        <th data-i18n="Medicine Name">Medicine</th>
+                        <th data-i18n="Quantity">Qty Sold</th>
+                        <th data-i18n="Total">Price</th>
+                        <th>Return Qty</th>
+                        <th data-i18n="Reason">Reason</th>
+                        <th>Condition</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -163,7 +163,7 @@ async function selectSaleForReturn(saleId, invoiceNumber) {
         document.getElementById('returnSaveBtn').disabled = false;
         updateReturnSummary();
     } catch (error) {
-        SwalAlert.error('Failed to load sale details: ' + error.message);
+        SwalAlert.error(t('Failed to load') + ': ' + error.message);
     }
 }
 
@@ -197,7 +197,7 @@ function updateReturnSummary() {
     if (selectedCount > 0) {
         summaryDiv.innerHTML = `
             <div class="alert alert-info py-2 mb-0">
-                <strong>${selectedCount}</strong> item(s) selected — Total Refund: <strong>${formatMoney(totalRefund)}</strong>
+                <strong>${selectedCount}</strong> items - Total: <strong>${formatMoney(totalRefund)}</strong>
             </div>
         `;
     } else {
@@ -207,13 +207,13 @@ function updateReturnSummary() {
 
 async function saveReturn() {
     if (!returnSaleData) {
-        SwalAlert.warning('Please select a sale invoice!');
+        SwalAlert.warning(t('Please select a sale invoice'));
         return;
     }
 
     const checkboxes = document.querySelectorAll('.return-item-check:checked');
     if (checkboxes.length === 0) {
-        SwalAlert.warning('Please select at least one item to return!');
+        SwalAlert.warning(t('Please select at least one item to return'));
         return;
     }
 
@@ -241,17 +241,17 @@ async function saveReturn() {
     };
 
     const btn = document.getElementById('returnSaveBtn');
-    if (btn) { btn.disabled = true; btn.innerHTML = '<i class="fas fa-spinner fa-spin me-1"></i>Processing...'; }
+    if (btn) { btn.disabled = true; btn.innerHTML = `<i class="fas fa-spinner fa-spin me-1"></i>${t('Processing...')}`; }
 
     try {
         await api.createReturn(data);
         bootstrap.Modal.getInstance(document.getElementById('returnModal')).hide();
-        SwalAlert.success('Return processed successfully!');
+        SwalAlert.success(t('Return processed successfully'));
         renderReturns();
     } catch (error) {
         SwalAlert.error(error.message);
     } finally {
-        if (btn) { btn.disabled = false; btn.innerHTML = '<i class="fas fa-save"></i> Process Return'; }
+        if (btn) { btn.disabled = false; btn.innerHTML = `<i class="fas fa-save"></i> ${t('Process Return')}`; }
     }
 }
 

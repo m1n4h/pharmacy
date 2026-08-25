@@ -6,7 +6,7 @@ import logging
 from app.core.config import get_settings
 from app.utils.settings import initialize_settings
 
-from app.api import auth, user, medicine, batch, inventory, purchase, sales, invoice, sales_report, dashboard, supplier, settings, prescription, activity, permission, currency, expense, notification, expiry, report, backup, branch, category, manufacturer, customer, stock_adjustment, return_api, stock_transfer, disposal
+from app.api import auth, user, medicine, batch, inventory, purchase, sales, invoice, sales_report, dashboard, supplier, settings, prescription, activity, permission, currency, expense, notification, expiry, report, backup, branch, category, manufacturer, customer, stock_adjustment, return_api, stock_transfer, disposal, sales_upload
 from app.middleware.rate_limit import RateLimitMiddleware
 from app.middleware.security_headers import SecurityHeadersMiddleware
 from app.middleware.request_logging import RequestLoggingMiddleware
@@ -125,6 +125,7 @@ app.include_router(stock_adjustment.router)
 app.include_router(return_api.router)
 app.include_router(stock_transfer.router)
 app.include_router(disposal.router)
+app.include_router(sales_upload.router)
 
 @app.get("/health", tags=["Health"])
 def health_check():

@@ -25,6 +25,7 @@ from app.models.stock_transfer import StockTransfer
 from app.models.return_record import Return, ReturnItem
 from app.models.payment import Payment
 from app.models.disposal import Disposal
+from app.models.upload_log import SalesUploadLog
 
 __all__ = [
     "User",
@@ -57,4 +58,5 @@ __all__ = [
     "ReturnItem",
     "Payment",
     "Disposal",
+    "SalesUploadLog",
 ]

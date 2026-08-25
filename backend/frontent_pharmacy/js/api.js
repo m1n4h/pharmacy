@@ -197,6 +197,25 @@ class PharmacyAPI {
         return this._extractItems(await this._authFetch(url));
     }
 
+    // ========== SALES UPLOAD ==========
+    async uploadSalesDocument(file) {
+        const formData = new FormData();
+        formData.append('file', file);
+        return this._authFetch(`${API_BASE_URL}/uploads/upload-document`, {
+            method: 'POST',
+            headers: { 'Authorization': `Bearer ${this.token}` },
+            body: formData
+        });
+    }
+
+    async processUpload(uploadId) {
+        return this._authFetch(`${API_BASE_URL}/uploads/process-upload/${uploadId}`, { method: 'POST' });
+    }
+
+    async getUploadLogs(page = 1, limit = 20) {
+        return this._extractData(await this._authFetch(`${API_BASE_URL}/uploads/upload-logs?page=${page}&limit=${limit}`));
+    }
+
     // ========== PURCHASES ==========
     async getPurchases(limit = 100) {
         return this._extractItems(await this._authFetch(`${API_BASE_URL}/purchases/?limit=${limit}`));

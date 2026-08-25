@@ -8,6 +8,9 @@ class CustomerService:
     @staticmethod
     def create(db: Session, data):
         d = to_dict(data)
+        existing = db.query(Customer).filter(Customer.name == d.get("name")).first()
+        if existing:
+            return None
         customer = Customer(**d)
         db.add(customer)
         db.commit()

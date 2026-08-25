@@ -1,4 +1,5 @@
 from fastapi import APIRouter, Depends
+from fastapi.responses import JSONResponse
 from sqlalchemy.orm import Session
 
 from app.core.deps import get_current_user
@@ -19,6 +20,8 @@ def create_customer(
     current_user = Depends(get_current_user)
 ):
     customer = CustomerService.create(db, payload)
+    if not customer:
+        return JSONResponse(status_code=400, content={"success": False, "message": "Customer already exists", "error": "DUPLICATE"})
 
     from app.services.activity_service import ActivityService
     ActivityService.log(
