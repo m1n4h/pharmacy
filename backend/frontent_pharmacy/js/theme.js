@@ -16,7 +16,7 @@ window.ThemeManager = {
         if (btn) {
             const icon = theme === 'dark' ? 'fa-moon' : 'fa-sun';
             const label = theme === 'dark' ? 'Dark' : 'Light';
-            btn.innerHTML = `<i class="fas ${icon} me-1"></i><span class="d-none d-sm-inline">${label}</span>`;
+            btn.innerHTML = `<i class="fas ${icon} me-1"></i><span class="theme-label">${label}</span>`;
             btn.title = theme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode';
         }
     },

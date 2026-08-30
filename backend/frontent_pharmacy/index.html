@@ -18,7 +18,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="js/sweetalert-helper.js?v=1"></script>
     
-    <link href="css/style.css?v=6" rel="stylesheet">
+    <link href="css/style.css?v=10" rel="stylesheet">
 </head>
 <body>
     <!-- Loading Overlay -->
@@ -58,21 +58,23 @@
             <div class="container-fluid d-flex align-items-center justify-content-between flex-nowrap">
                 <div class="d-flex align-items-center">
                     <button class="menu-toggle" id="menuToggle" onclick="toggleSidebar()" aria-label="Toggle navigation menu">
-                        <i class="fas fa-bars"></i>
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
                     </button>
                     <a class="navbar-brand" href="#"><i class="fas fa-hospital-user me-2 d-none d-sm-inline"></i>Pharma<span class="text-accent">Care</span></a>
                 </div>
                 <div class="d-flex align-items-center gap-2">
                     <button class="lang-toggle" id="langToggle" onclick="toggleLanguage()" title="Toggle Language">EN</button>
-                    <button class="theme-toggle" id="themeToggle" onclick="ThemeManager.toggle()" title="Toggle Theme"><i class="fas fa-moon me-1"></i><span class="d-none d-sm-inline">Dark</span></button>
-                    <div class="notification-bell me-2 position-relative" onclick="toggleNotificationPanel()" role="button" title="Notifications">
+                    <button class="theme-toggle" id="themeToggle" onclick="ThemeManager.toggle()" title="Toggle Theme"><i class="fas fa-moon me-1"></i><span class="theme-label">Dark</span></button>
+                    <div class="notification-bell me-2 position-relative d-none d-sm-block" onclick="toggleNotificationPanel()" role="button" title="Notifications">
                         <i class="fas fa-bell text-light fs-5"></i>
                         <span class="notification-badge d-none" id="notifBadge">0</span>
                     </div>
                     <span class="text-light me-2 d-none d-md-inline text-truncate" style="max-width:140px;">
                         <i class="fas fa-user-circle me-1"></i><span id="userName">Admin</span>
                     </span>
-                    <span class="badge bg-info me-2 d-none d-sm-inline" id="userRole">Admin</span>
+                    <span class="badge bg-info me-2 d-none d-md-inline" id="userRole">Admin</span>
                     <button class="btn btn-outline-light btn-sm" onclick="handleLogout()">
                         <i class="fas fa-sign-out-alt"></i><span class="d-none d-sm-inline ms-1" data-i18n="Logout">Logout</span>
                     </button>
